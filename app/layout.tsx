@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { pretendard } from "@/styles/font";
+import Layout from "@/components/layout/layout";
 
 export const metadata: Metadata = {
   title: "PR Deliver",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable}`}>{children}</body>
+      <body className={`${pretendard.variable}`}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
