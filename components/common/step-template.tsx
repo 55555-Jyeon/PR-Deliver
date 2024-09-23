@@ -21,7 +21,7 @@ const StepTemplate = ({
         <Image fill sizes="auto" src={imageSrc} alt="each step's image" />
       </div>
       {imageDesc && (
-        <p className="text-[14px] text-GREY-60 pt-3 pl-1">{imageDesc}</p>
+        <p className="text-sm text-GREY-60 pt-3 pl-1">{imageDesc}</p>
       )}
     </div>
   );
