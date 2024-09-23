@@ -2,16 +2,8 @@
 
 import Image from "next/image";
 import TabMenu from "./tabMenu";
-import { ReactNode, useState } from "react";
-
-export type TabLayoutProps = {
-    title: string;
-    icon: string;
-    content: string;
-    tabTitle1: string;
-    tabTitle2: string;
-    children: [ReactNode, ReactNode];
-};
+import { useState } from "react";
+import { TabLayoutProps } from "./type";
 
 const TabLayout = ({
     title,
