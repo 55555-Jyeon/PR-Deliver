@@ -19,8 +19,10 @@ const StepTemplate = ({
         style={{ height: `${imageHeight}px` }}
       >
         <Image fill sizes="auto" src={imageSrc} alt="each step's image" />
-        {imageDesc && <p className="text-[14px] text-GREY-60">{imageDesc}</p>}
       </div>
+      {imageDesc && (
+        <p className="text-[14px] text-GREY-60 pt-3 pl-1">{imageDesc}</p>
+      )}
     </div>
   );
 };

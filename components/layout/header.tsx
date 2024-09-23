@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="relative top-0 w-full h-[60px] px-[100px] border-b border-GREY-20 flex-items justify-between">
+    <div className="fixed top-0 w-full h-[60px] px-[100px] bg-SYSTEM-white border-b border-GREY-20 flex-items justify-between z-50">
       <Image
         priority
         src={"/light/images/logo.svg"}
