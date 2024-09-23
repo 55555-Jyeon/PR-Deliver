@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import TabMenu from "./tabMenu";
+import TabMenu from "./tab-menu";
 import { useState } from "react";
 import { TabLayoutProps } from "./type";
 
