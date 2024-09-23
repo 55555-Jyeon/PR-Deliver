@@ -17,7 +17,7 @@ const TabLayout = ({
 
     return (
         <div className="w-[1280px] h-full pt-20 ">
-            <div className="flex flex-row items-center justify-start">
+            <div className=" flex-items flex-row justify-start">
                 <div className="w-8 h-8 mr-[14px]">
                     <Image src={icon} alt="Icon" width={32} height={32} />
                 </div>
