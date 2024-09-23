@@ -9,12 +9,17 @@ const StepTemplate = ({
   imageDesc,
 }: StepTemplateProps) => {
   return (
-    <div className="w-[1280px] h-fit flex-col items-center justify-start">
-      <h1>STEP {index + 1}</h1>
-      <p>{stepDesc}</p>
-      <div className={`relative w-full h-[${imageHeight}px] flex flex-col`}>
+    <div className="w-[1280px] h-fit flex-col items-center justify-start py-12 text-GREY-90">
+      <span className="size-full bg-GREY-10 rounded-full px-3 py-2.5 font-semibold text-[14px]">
+        STEP {index + 1}
+      </span>
+      <p className="text-[16px] mt-4 mb-5">{stepDesc}</p>
+      <div
+        className={`relative w-full flex flex-col`}
+        style={{ height: `${imageHeight}px` }}
+      >
         <Image fill sizes="auto" src={imageSrc} alt="each step's image" />
-        {imageDesc && <p>{imageDesc}</p>}
+        {imageDesc && <p className="text-[14px] text-GREY-60">{imageDesc}</p>}
       </div>
     </div>
   );
