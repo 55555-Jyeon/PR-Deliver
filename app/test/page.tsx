@@ -6,19 +6,17 @@ import { GitHubWebHook } from "@/constants/steps/github";
 
 const Test = () => {
   return (
-    <>
-      <div className="relative flex-center flex-col w-full h-max">
-        {GitHubWebHook.map((step, index) => (
-          <StepTemplate
-            key={step.stepDesc}
-            index={index}
-            stepDesc={step.stepDesc}
-            imageSrc={step.imageSrc}
-            imageHeight={step.imageHeight}
-            imageDesc={step.imageDesc}
-          />
-        ))}
-      </div>
+    <div className="relative flex-center flex-col w-full h-max">
+      {GitHubWebHook.map((step, index) => (
+        <StepTemplate
+          key={step.stepDesc}
+          index={index}
+          stepDesc={step.stepDesc}
+          imageSrc={step.imageSrc}
+          imageHeight={step.imageHeight}
+          imageDesc={step.imageDesc}
+        />
+      ))}
       <DeliverButton
         length="smaller"
         onClick={() => {
@@ -26,7 +24,7 @@ const Test = () => {
         }}
         label="register"
       />
-    </>
+    </div>
   );
 };
 export default Test;
