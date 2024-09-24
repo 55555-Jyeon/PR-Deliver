@@ -21,3 +21,10 @@ export type TabMenuProps = {
   tabTitle: string;
   isSelected: boolean;
 };
+
+export type DeliverButtonProps = {
+  isActive?: boolean;
+  onClick: () => void;
+  length: "smaller" | "full";
+  label: string;
+};
