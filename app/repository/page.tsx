@@ -1,8 +1,17 @@
+"use client";
+
 import CustomInput from "@/components/common/custom-input";
 import TabLayout from "@/components/common/tab-layout";
+import { useForm } from "react-hook-form";
 
 const Repository = () => {
+    const { control, handleSubmit } = useForm();
+
     const tabs = ["등록 방법", "레포지토리 등록"];
+
+    const onSubmit = () => {
+        console.log("data");
+    };
 
     return (
         <div className="w-full h-full flex-center flex-col ">
@@ -13,13 +22,14 @@ const Repository = () => {
                 tabs={tabs}
             >
                 <div>Tab One</div>
-                <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <CustomInput
+                        name="owner"
+                        control={control}
                         title="소유자 입력"
-                        className=""
                         placeholder="ex) ca1af"
                     />
-                </div>
+                </form>
             </TabLayout>
         </div>
     );

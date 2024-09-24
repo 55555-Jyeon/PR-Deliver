@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { UseControllerProps } from "react-hook-form";
 
 export type StepTemplateProps = {
     index: number;
@@ -22,3 +23,9 @@ export type TabMenuProps = {
     isPrevSelected: boolean;
     isNextSelected: boolean;
 };
+
+export type CustomInputProps = {
+    title?: string;
+    placeholder: string;
+    className?: string;
+} & UseControllerProps;
