@@ -29,7 +29,7 @@ const RegisterGitHub = () => {
           onClick={() => {
             alert("clicked!");
           }}
-          label="register"
+          label="완료했어요"
         />
       </div>
     </div>
