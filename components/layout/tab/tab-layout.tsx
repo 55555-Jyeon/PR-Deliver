@@ -2,8 +2,8 @@
 
 import TabMenu from "./tab-menu";
 import { useState } from "react";
-import { TabLayoutProps } from "./type";
 import PageDescription from "./page-desc";
+import { TabLayoutProps } from "./type";
 
 const TabLayout = ({
   title,

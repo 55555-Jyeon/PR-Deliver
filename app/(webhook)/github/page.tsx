@@ -1,7 +1,7 @@
 "use client";
 
 import DeliverButton from "@/components/common/button";
-import PageDescription from "@/components/common/page-desc";
+import PageDescription from "@/components/layout/tab/page-desc";
 import StepTemplate from "@/components/common/step-template";
 import { GitHubWebHook } from "@/constants/steps/github";
 
