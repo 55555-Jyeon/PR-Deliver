@@ -3,7 +3,7 @@ export type TabLayoutProps = {
   icon: string;
   content: string;
   tabs: string[];
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode[];
 };
 
 export type TabMenuProps = {
