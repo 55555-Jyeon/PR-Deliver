@@ -42,7 +42,7 @@ const TabLayout = ({
                         />
                     </div>
                 ))}
-                <div className=" absolute w-[1073px] bottom-0 left-[207px]  border-b-2 border-b-SYSTEM-black z-10" />
+                <div className=" absolute w-[1073px] -ml-[2px] bottom-0 left-[207px] border-b-2 border-b-SYSTEM-black z-10" />
             </div>
             <div className="mt-12">
                 {Array.isArray(children) ? children[activeTab] : children}

@@ -15,7 +15,7 @@ const TabMenu = ({ tabTitle, isSelected }: TabMenuProps) => {
       `}
             >
                 <div
-                    className={`absolute w-full p-2.5 h-[50px] border-b-2  ${
+                    className={`absolute w-full p-2.5 h-[50px]  ${
                         isSelected
                             ? "border-b-0 border-b-SYSTEM-white"
                             : "border-b-2 border-b-SYSTEM-black"
