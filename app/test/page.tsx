@@ -1,3 +1,6 @@
+"use client";
+
+import DeliverButton from "@/components/common/button";
 import StepTemplate from "@/components/common/step-template";
 import { GitHubWebHook } from "@/constants/steps/github";
 
@@ -14,6 +17,13 @@ const Test = () => {
           imageDesc={step.imageDesc}
         />
       ))}
+      <DeliverButton
+        length="smaller"
+        onClick={() => {
+          alert("clicked!");
+        }}
+        label="register"
+      />
     </div>
   );
 };

@@ -24,8 +24,18 @@ export type TabMenuProps = {
     isNextSelected: boolean;
 };
 
+
+export type DeliverButtonProps = {
+  isActive?: boolean;
+  onClick: () => void;
+  length: "smaller" | "full";
+  label: string;
+};
+
+
 export type CustomInputProps = {
     title?: string;
     placeholder: string;
     className?: string;
 } & UseControllerProps;
+
