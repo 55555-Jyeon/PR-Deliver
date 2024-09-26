@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const PageDescription = () => {
+const MainDescription = () => {
   return (
     <>
       <div className="w-[300px] h-[300px] rounded-full bg-GREY-10 flex-center">
@@ -22,4 +22,4 @@ const PageDescription = () => {
     </>
   );
 };
-export default PageDescription;
+export default MainDescription;
