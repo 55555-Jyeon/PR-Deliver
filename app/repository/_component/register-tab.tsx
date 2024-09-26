@@ -1,22 +1,42 @@
+import DeliverButton from "@/components/common/button";
 import CustomInput from "@/components/common/custom-input";
 import { useForm } from "react-hook-form";
 
 const RegisterRepositoryTab = () => {
-    const { control, handleSubmit } = useForm();
+    const { control, handleSubmit } = useForm({
+        mode: "onChange",
+    });
 
     const onSubmit = () => {
         console.log("data");
     };
 
     return (
-        <div>
+        <div className="w-full flex justify-center items-center pt-24">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <CustomInput
-                    name="owner"
-                    control={control}
-                    title="소유자 입력"
-                    placeholder="ex) ca1af"
-                />
+                <div>
+                    <CustomInput
+                        name="owner"
+                        control={control}
+                        title="소유자 입력"
+                        placeholder="ex) ca1af"
+                        rules={{ required: "소유자는 필수 입력입니다." }}
+                    />
+                </div>
+                <div className="mt-[20px]">
+                    <CustomInput
+                        name="repository-name"
+                        control={control}
+                        title="레포지토리 이름 입력"
+                        placeholder="ex) re-deliver"
+                        rules={{
+                            required: "레포지토리 이름은 필수 입력입니다.",
+                        }}
+                    />
+                </div>
+                <div className="mt-10">
+                    <DeliverButton type="submit" length="full" label="다음" />
+                </div>
             </form>
         </div>
     );

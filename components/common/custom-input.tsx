@@ -46,7 +46,8 @@ const CustomInput = ({
     } = useController({
         name,
         control,
-        rules: { required: "값이 비어있습니다.", ...rules },
+        rules: { required: "This field is required", ...rules },
+        defaultValue: "",
     });
     return (
         <div className="w-[416px] ">
@@ -59,11 +60,14 @@ const CustomInput = ({
                 {...field}
                 placeholder={placeholder}
                 className={clsx(
-                    "w-full rounded-[10px] border-2 border-[#E8EBF4] px-[20px] py-[15px] text-GREY-60 text-sm focus:outline-none",
+                    "w-full rounded-[10px] border-2 border-GREY-20 px-[20px] py-[15px] text-GREY-60 text-sm focus:outline-none",
                     error && "border-2 border-SYSTEM-red",
                     className
                 )}
             />
+            {error && (
+                <p className="text-SYSTEM-red text-xs mt-1">{error.message}</p>
+            )}
         </div>
     );
 };

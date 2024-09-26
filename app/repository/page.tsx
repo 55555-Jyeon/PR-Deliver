@@ -1,9 +1,9 @@
 "use client";
 
-import TabLayout from "@/components/common/tab-layout";
 import { repositoryData } from "@/constants/steps/repository";
 import RegistrationMethodTab from "./_component/method-tab";
 import RegisterRepositoryTab from "./_component/register-tab";
+import TabLayout from "@/components/layout/tab/tab-layout";
 
 const Repository = () => {
     const tabs = ["등록 방법", "레포지토리 등록"];
