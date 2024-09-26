@@ -1,6 +1,6 @@
 import TabLayout from "@/components/layout/tab/tab-layout";
-import RegisterTab from "./_components/register";
-import MethodTab from "./_components/method";
+import RegisterTab from "./_components/register-tab";
+import MethodTab from "./_components/method-tab";
 
 const RegisterMessanger = () => {
   const tabs = ["등록 방법", "메신저 등록"];
