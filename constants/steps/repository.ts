@@ -1,6 +1,6 @@
-import { StepType } from "../type";
+import { AddStepType } from "../type";
 
-export const repositoryData: StepType[] = [
+export const repositoryData: AddStepType[] = [
     {
         stepDesc: "레포지토리에서 Settings 클릭",
         imageSrc: "/images/steps/repo/01.jpg",

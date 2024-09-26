@@ -1,9 +1,11 @@
 export type StepType = {
     stepDesc: string;
     imageSrc: string;
-    secondImageSrc?: string;
     imageDesc?: string;
-    secondImageDesc?: string;
     imageHeight: number;
+};
+export type AddStepType = StepType & {
+    secondImageSrc?: string;
+    secondImageDesc?: string;
     secondImageHeight?: number;
 };
