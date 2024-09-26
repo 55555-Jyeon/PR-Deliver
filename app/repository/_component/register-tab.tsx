@@ -2,7 +2,7 @@ import DeliverButton from "@/components/common/button";
 import CustomInput from "@/components/common/custom-input";
 import { useForm } from "react-hook-form";
 
-const RegisterRepositoryTab = () => {
+const RegisterTab = () => {
     const { control, handleSubmit } = useForm({
         mode: "onChange",
     });
@@ -41,4 +41,4 @@ const RegisterRepositoryTab = () => {
         </div>
     );
 };
-export default RegisterRepositoryTab;
+export default RegisterTab;

@@ -1,9 +1,9 @@
 "use client";
 
 import { repositoryData } from "@/constants/steps/repository";
-import RegistrationMethodTab from "./_component/method-tab";
-import RegisterRepositoryTab from "./_component/register-tab";
 import TabLayout from "@/components/layout/tab/tab-layout";
+import MethodTab from "./_component/method-tab";
+import RegisterTab from "./_component/register-tab";
 
 const Repository = () => {
     const tabs = ["등록 방법", "레포지토리 등록"];
@@ -17,7 +17,7 @@ const Repository = () => {
                 tabs={tabs}
             >
                 {repositoryData.map((repository, index) => (
-                    <RegistrationMethodTab
+                    <MethodTab
                         key={index}
                         index={index}
                         stepDesc={repository.stepDesc}
@@ -29,7 +29,7 @@ const Repository = () => {
                         secondImageDesc={repository.secondImageDesc}
                     />
                 ))}
-                <RegisterRepositoryTab />
+                <RegisterTab />
             </TabLayout>
         </div>
     );

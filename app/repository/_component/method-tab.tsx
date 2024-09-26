@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { RegistrationProps } from "./type";
 
-const RegistrationMethodTab = ({
+const MethodTab = ({
     index,
     stepDesc,
     imageSrc,
@@ -50,4 +50,4 @@ const RegistrationMethodTab = ({
         </div>
     );
 };
-export default RegistrationMethodTab;
+export default MethodTab;
