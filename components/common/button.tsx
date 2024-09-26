@@ -9,6 +9,7 @@ import "@/styles/button.css";
  * @param {function} onClick - 버튼 클릭 시 호출되는 이벤트 핸들러
  * @param {string} length - 버튼의 너비/길이를 결정하며 smaller와 full 둘 중 하나 선택 가능
  * @param {string} label - 버튼에 표시될 텍스트
+ * @param {string} type - 버튼의 타입을 지정. 기본값은 button
  *
  * @returns {JSX.Element} 버튼 컴포넌트를 반환
  * 
