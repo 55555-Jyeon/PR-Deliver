@@ -5,7 +5,7 @@ import { useController } from "react-hook-form";
 import { CustomInputProps } from "./type";
 
 /**
- * @conponent CustomInput
+ * @conponent DeliverInput
  * @description
  *  react-hook-form을 사용한 custom input
  *  너비 416px로 고정되어 있습니다.
@@ -21,7 +21,7 @@ import { CustomInputProps } from "./type";
  * @returns {React.ReactElement}
  *
  * @example
- * <CustomInput
+ * <DeliverInput
  *      name="name"
  *      title="이름"
  *      placeholder="이름 입력을 입력하세요"
@@ -32,7 +32,7 @@ import { CustomInputProps } from "./type";
  * @see {@link useController} react-hook-form의 useController 훅
  */
 
-const CustomInput = ({
+const DeliverInput = ({
     name,
     title,
     placeholder,
@@ -71,4 +71,4 @@ const CustomInput = ({
         </div>
     );
 };
-export default CustomInput;
+export default DeliverInput;

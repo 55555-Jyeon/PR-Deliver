@@ -1,5 +1,6 @@
 import DeliverButton from "@/components/common/button";
-import CustomInput from "@/components/common/custom-input";
+import DeliverInput from "@/components/common/input";
+
 import { useForm } from "react-hook-form";
 
 const RegisterTab = () => {
@@ -15,7 +16,7 @@ const RegisterTab = () => {
         <div className="w-full flex justify-center items-center pt-24">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <CustomInput
+                    <DeliverInput
                         name="owner"
                         control={control}
                         title="소유자 입력"
@@ -24,7 +25,7 @@ const RegisterTab = () => {
                     />
                 </div>
                 <div className="mt-[20px]">
-                    <CustomInput
+                    <DeliverInput
                         name="repository-name"
                         control={control}
                         title="레포지토리 이름 입력"
