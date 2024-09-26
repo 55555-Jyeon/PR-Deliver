@@ -1,5 +1,5 @@
 import AuthLoginButton from "./_components/auth-login-button";
-import PageDescription from "./_components/description";
+import MainDescription from "./_components/description";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       className="absolute w-full flex-center flex-col"
       style={{ height: `calc(100vh - 180px)` }}
     >
-      <PageDescription />
+      <MainDescription />
       <AuthLoginButton />
     </main>
   );

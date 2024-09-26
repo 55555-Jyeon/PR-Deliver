@@ -4,7 +4,7 @@
   width: 0;
   border-radius: 50%;
   background-color: #6317e5; /* brand-50 */
-  transition: all 0.3s ease-out;
+  transition: all 0.4s ease-out;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -12,6 +12,6 @@
 }
 
 .group:hover .custom-hover-effect {
-  height: 14rem; /* h-56 */
-  width: 14rem; /* w-56 */
+  height: 28rem;
+  width: 28rem;
 }
