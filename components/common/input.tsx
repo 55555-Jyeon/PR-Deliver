@@ -5,7 +5,7 @@ import { useController } from "react-hook-form";
 import { CustomInputProps } from "./type";
 
 /**
- * @conponent CustomInput
+ * @conponent DeliverInput
  * @description
  *  react-hook-form을 사용한 custom input
  *  너비 416px로 고정되어 있습니다.
@@ -21,7 +21,7 @@ import { CustomInputProps } from "./type";
  * @returns {React.ReactElement}
  *
  * @example
- * <CustomInput
+ * <DeliverInput
  *      name="name"
  *      title="이름"
  *      placeholder="이름 입력을 입력하세요"
@@ -32,7 +32,7 @@ import { CustomInputProps } from "./type";
  * @see {@link useController} react-hook-form의 useController 훅
  */
 
-const CustomInput = ({
+const DeliverInput = ({
     name,
     title,
     placeholder,
@@ -46,7 +46,8 @@ const CustomInput = ({
     } = useController({
         name,
         control,
-        rules: { required: "값이 비어있습니다.", ...rules },
+        rules: { required: "This field is required", ...rules },
+        defaultValue: "",
     });
     return (
         <div className="w-[416px] ">
@@ -59,12 +60,15 @@ const CustomInput = ({
                 {...field}
                 placeholder={placeholder}
                 className={clsx(
-                    "w-full rounded-[10px] border-2 border-[#E8EBF4] px-[20px] py-[15px] text-GREY-60 text-sm focus:outline-none",
+                    "w-full rounded-[10px] border-2 border-GREY-20 px-[20px] py-[15px] text-GREY-60 text-sm focus:outline-none",
                     error && "border-2 border-SYSTEM-red",
                     className
                 )}
             />
+            {error && (
+                <p className="text-SYSTEM-red text-xs mt-1">{error.message}</p>
+            )}
         </div>
     );
 };
-export default CustomInput;
+export default DeliverInput;

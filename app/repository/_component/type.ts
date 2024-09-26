@@ -1,11 +1,10 @@
-export type StepType = {
+export type RegistrationProps = {
+    index: number;
     stepDesc: string;
     imageSrc: string;
-    imageDesc?: string;
     imageHeight: number;
-};
-export type AddStepType = StepType & {
     secondImageSrc?: string;
-    secondImageDesc?: string;
     secondImageHeight?: number;
+    imageDesc?: string;
+    secondImageDesc?: string;
 };
