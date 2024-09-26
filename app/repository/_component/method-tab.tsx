@@ -1,15 +1,5 @@
 import Image from "next/image";
-
-export type RegistrationProps = {
-    index: number;
-    stepDesc: string;
-    imageSrc: string;
-    imageHeight: number;
-    secondImageSrc?: string;
-    secondImageHeight?: number;
-    imageDesc?: string;
-    secondImageDesc?: string;
-};
+import { RegistrationProps } from "./type";
 
 const RegistrationMethodTab = ({
     index,
