@@ -1,7 +1,7 @@
 "use client";
 
 import DeliverButton from "@/components/common/button";
-import CustomInput from "@/components/common/custom-input";
+import DeliverInput from "@/components/common/input";
 import { useForm } from "react-hook-form";
 
 const RegisterTab = () => {
@@ -15,7 +15,7 @@ const RegisterTab = () => {
     <div className="min-h-[648px] flex-justify">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-[100px] mb-10">
-          <CustomInput
+          <DeliverInput
             name="messenger webhook url"
             control={control}
             title="웹훅 URL 입력"
