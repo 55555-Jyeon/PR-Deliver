@@ -10,7 +10,7 @@ const AuthLoginButton = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch("");
+            const response = await fetch("/api/auth/github");
             const data = await response.json();
 
             if (data.url) {
