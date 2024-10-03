@@ -2,7 +2,7 @@ import { TabListType } from "@/constants/type";
 
 export type SideNavProps = {
   activeTab: string;
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+  setActiveTab: (tab: string) => void;
 };
 export type TabTitleProps = {
   tabNum: TabListType;
