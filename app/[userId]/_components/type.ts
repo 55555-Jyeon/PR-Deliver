@@ -1,8 +1,8 @@
 import { TabListType } from "@/constants/type";
 
 export type SideNavProps = {
+  userId: string;
   activeTab: string;
-  setActiveTab: (tab: string) => void;
 };
 export type TabTitleProps = {
   tabNum: TabListType;
