@@ -1,33 +1,16 @@
 "use client";
-
 import Image from "next/image";
-import { useState } from "react";
+
+const API_URI = process.env.NEXT_PUBLIC_API_URL;
 
 const AuthLoginButton = () => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleLogin = async () => {
-        setIsLoading(true);
-
-        try {
-            const response = await fetch("/api/auth/github");
-            const data = await response.json();
-
-            if (data.url) {
-                window.location.href = data.url;
-            } else {
-                throw new Error("깃허브 OAuth URL 가져오기 실패");
-            }
-        } catch (error) {
-            console.error("깃 허브 로그인 실패", error);
-        } finally {
-            setIsLoading(false);
-        }
+    const handleClick = () => {
+        window.location.href = `${API_URI}/oauth2/authorization/github`;
     };
 
     return (
         <div
-            onClick={handleLogin}
+            onClick={handleClick}
             className="w-[416px] h-[52px] bg-SYSTEM-black rounded-[10px] flex-center cursor-pointer"
         >
             <Image
@@ -38,7 +21,7 @@ const AuthLoginButton = () => {
                 alt="github login"
             />
             <p className="text-[14px] text-SYSTEM-white ml-2.5">
-                {isLoading ? "로딩중..." : "깃허브로 로그인하기"}
+                깃허브로 로그인하기
             </p>
         </div>
     );

@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const handler = async (): Promise<NextResponse> => {
     const state = nanoid();
