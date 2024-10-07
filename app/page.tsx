@@ -7,10 +7,10 @@ import UserDashboard from "./_components/user-dashboard";
 import Cookies from "js-cookie";
 
 export default function Home() {
-    let token: string | undefined = "";
+    const [token, setToken] = useState<string | undefined>("");
 
     useEffect(() => {
-        token = Cookies.get("auth_token");
+        setToken(Cookies.get("auth_token"));
     }, []);
 
     return (

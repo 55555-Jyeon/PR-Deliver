@@ -38,7 +38,7 @@ export default function OAuthCallback() {
                         });
                     }
 
-                    router.push("/repository");
+                    router.push("/");
                 } catch (error) {
                     console.error("Error during token exchange:", error);
                 }
