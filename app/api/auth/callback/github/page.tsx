@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const API_URI = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,13 +15,16 @@ export default function OAuthCallback() {
 
             if (code) {
                 try {
-                    const response = await fetch(`${API_URI}/oauth2/success`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ code }),
-                    });
+                    const response = await fetch(
+                        `${API_URI}/oauth2/success?code=${code}`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            credentials: "include",
+                        }
+                    );
 
                     if (!response.ok) {
                         throw new Error("Failed to get token");
@@ -28,7 +32,11 @@ export default function OAuthCallback() {
 
                     const data = await response.json();
 
-                    console.log(data);
+                    if (data.accessToken) {
+                        Cookies.set("auth_token", data.accessToken, {
+                            expires: 7,
+                        });
+                    }
 
                     router.push("/repository");
                 } catch (error) {
