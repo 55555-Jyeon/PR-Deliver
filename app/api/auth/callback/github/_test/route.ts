@@ -13,7 +13,6 @@ const handler = async (): Promise<NextResponse> => {
         path: "/",
         maxAge: 3600,
     });
-
     return response;
 };
 
