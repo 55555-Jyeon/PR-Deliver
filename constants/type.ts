@@ -19,5 +19,6 @@ export type UserDashboardOptionsType = {
 };
 export type TabListType = {
   icon: string;
+  hoverIcon: string;
   title: string;
 };

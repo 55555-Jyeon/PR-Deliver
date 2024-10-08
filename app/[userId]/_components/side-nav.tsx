@@ -21,7 +21,7 @@ const SideNavigation = ({ activeTab, userId }: SideNavProps) => {
                 <Image
                   width={18}
                   height={18}
-                  src={tab.icon}
+                  src={activeTab ? tab.hoverIcon : tab.icon}
                   alt={tab.title}
                   className="mr-[15px]"
                 />
