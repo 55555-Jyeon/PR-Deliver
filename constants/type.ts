@@ -13,6 +13,7 @@ export type AddStepType = StepType & {
 
 /* user */
 export type UserDashboardOptionsType = {
+  icon: string;
   title: string;
   subText: string;
   url: string;
