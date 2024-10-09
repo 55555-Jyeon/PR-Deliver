@@ -11,6 +11,7 @@ const TabLayout = ({
   content,
   tabs,
   children,
+  leftPosition,
 }: TabLayoutProps) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
@@ -32,7 +33,9 @@ const TabLayout = ({
             />
           </div>
         ))}
-        <div className="absolute w-[1073px] bottom-0 left-[207px] border-b-2 border-b-SYSTEM-black z-10" />
+        <div
+          className={`absolute w-[1073px] bottom-0 left-[${leftPosition}] border-b-2 border-b-SYSTEM-black z-10`}
+        />
       </div>
       <div className="mt-12">
         {Array.isArray(children) ? children[activeTab] : children}

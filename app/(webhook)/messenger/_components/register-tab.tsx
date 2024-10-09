@@ -13,7 +13,7 @@ const RegisterTab = () => {
     name: "messengerType",
     control,
     rules: { required: true },
-    defaultValue: "", // 기본값을 설정합니다.
+    defaultValue: "",
   });
 
   const onSubmit = () => {

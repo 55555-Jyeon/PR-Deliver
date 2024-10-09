@@ -12,6 +12,7 @@ const RegisterMessenger = () => {
         icon="/light/icons/register.svg"
         content="메신저 웹훅 등록 방법 안내"
         tabs={tabs}
+        leftPosition="178.5px"
       >
         <MethodTab />
         <RegisterTab />
