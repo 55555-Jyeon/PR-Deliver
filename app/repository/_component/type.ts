@@ -8,3 +8,8 @@ export type RegistrationProps = {
     imageDesc?: string;
     secondImageDesc?: string;
 };
+
+export type onSubmitRepositoryProps = {
+    owner: string;
+    reoisitoryName: string;
+};
