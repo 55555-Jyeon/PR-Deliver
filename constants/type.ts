@@ -23,3 +23,7 @@ export type TabListType = {
   hoverIcon: string;
   title: string;
 };
+export type messengerType = {
+  label: string;
+  value: string;
+};

@@ -33,42 +33,40 @@ import { CustomInputProps } from "./type";
  */
 
 const DeliverInput = ({
-    name,
-    title,
-    placeholder,
-    className,
-    control,
-    rules,
+  name,
+  title,
+  placeholder,
+  className,
+  control,
+  rules,
 }: CustomInputProps) => {
-    const {
-        field,
-        fieldState: { error },
-    } = useController({
-        name,
-        control,
-        rules: { required: "This field is required", ...rules },
-        defaultValue: "",
-    });
-    return (
-        <div className="w-[416px] ">
-            {title && (
-                <div className="w-full mb-2 font-medium text-SYSTEM-black text-sm">
-                    {title}
-                </div>
-            )}
-            <input
-                {...field}
-                placeholder={placeholder}
-                className={clsx(
-                    "w-full rounded-[10px] border-2 border-GREY-20 px-[20px] py-[15px] text-GREY-60 text-sm focus:outline-none",
-                    error && "border-2 border-SYSTEM-red",
-                    className
-                )}
-            />
-            {error && (
-                <p className="text-SYSTEM-red text-xs mt-1">{error.message}</p>
-            )}
+  const {
+    field,
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+    rules: { required: "This field is required", ...rules },
+    defaultValue: "",
+  });
+  return (
+    <div className="w-[416px]">
+      {title && (
+        <div className="w-full mb-2 font-medium text-SYSTEM-black text-sm">
+          {title}
         </div>
-    );
+      )}
+      <input
+        {...field}
+        placeholder={placeholder}
+        className={clsx(
+          "w-full rounded-[10px] border-2 border-GREY-20 px-5 py-[15px] text-GREY-60 text-sm focus:outline-none",
+          error && "border-2 border-SYSTEM-red",
+          className
+        )}
+      />
+      {error && <p className="text-SYSTEM-red text-xs mt-1">{error.message}</p>}
+    </div>
+  );
 };
 export default DeliverInput;
