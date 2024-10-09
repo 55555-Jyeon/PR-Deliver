@@ -13,11 +13,17 @@ export type AddStepType = StepType & {
 
 /* user */
 export type UserDashboardOptionsType = {
+  icon: string;
   title: string;
   subText: string;
   url: string;
 };
 export type TabListType = {
   icon: string;
+  hoverIcon: string;
   title: string;
+};
+export type messengerType = {
+  label: string;
+  value: string;
 };

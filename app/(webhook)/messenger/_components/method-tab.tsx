@@ -1,5 +1,5 @@
 import StepTemplate from "@/components/common/step-template";
-import { MessengerWebHook } from "@/constants/steps/messagener";
+import { MessengerWebHook } from "@/constants/steps/messenger";
 
 const MethodTab = () => {
   return (

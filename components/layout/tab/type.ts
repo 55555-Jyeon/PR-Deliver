@@ -4,6 +4,7 @@ export type TabLayoutProps = {
   content: string;
   tabs: string[];
   children: React.ReactNode[];
+  leftPosition: string;
 };
 
 export type TabMenuProps = {

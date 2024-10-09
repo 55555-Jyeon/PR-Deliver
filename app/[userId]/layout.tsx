@@ -2,14 +2,9 @@
 
 import SideNavigation from "./_components/side-nav";
 import { usePathname } from "next/navigation";
+import { UserLayoutProps } from "./type";
 
-export default function UserLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { userId: string };
-}) {
+export default function UserLayout({ children, params }: UserLayoutProps) {
   const pathname = usePathname();
   const activeTab = pathname.endsWith("/custom-message")
     ? "custom-message"
