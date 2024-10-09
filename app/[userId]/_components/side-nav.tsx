@@ -10,6 +10,7 @@ const SideNavigation = ({ activeTab, userId }: SideNavProps) => {
         {TAB_LIST.map((tab) => {
           const tabTitle =
             tab.title === "레포지토리 목록" ? "repo-list" : "custom-message";
+          const isActive = activeTab === tabTitle;
           return (
             <li key={tab.title}>
               <Link
@@ -21,7 +22,7 @@ const SideNavigation = ({ activeTab, userId }: SideNavProps) => {
                 <Image
                   width={18}
                   height={18}
-                  src={activeTab ? tab.hoverIcon : tab.icon}
+                  src={isActive ? tab.hoverIcon : tab.icon}
                   alt={tab.title}
                   className="mr-[15px]"
                 />
