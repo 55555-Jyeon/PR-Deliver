@@ -1,10 +1,13 @@
 import { postFetchRepository } from "@/apis/repository";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
+import { useRouter } from "next/navigation";
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterTab = () => {
+    const router = useRouter();
+
     const { control, handleSubmit } = useForm({
         mode: "onChange",
     });
@@ -17,8 +20,11 @@ const RegisterTab = () => {
         if (response?.status === 400) {
             alert("봇 계정에 대한 초대가 완료되지 않았습니다.");
         }
+        if (response?.status === 500) {
+            alert("서버 에러가 발생했습니다. 다시 시도해 주세요");
+        }
 
-        console.log(response, "response");
+        router.push("/github");
     };
 
     return (
