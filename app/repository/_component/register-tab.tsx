@@ -1,20 +1,35 @@
+import { postFetchRepository } from "@/apis/repository";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
+import { useRouter } from "next/navigation";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterTab = () => {
+    const router = useRouter();
+
     const { control, handleSubmit } = useForm({
         mode: "onChange",
     });
 
-    const onSubmit = () => {
-        console.log("data");
+    const onSubmitRepository: SubmitHandler<FieldValues> = async (data) => {
+        const fullName = `${data.owner}/${data.repositoryName}`;
+
+        const response = await postFetchRepository(fullName);
+
+        if (response?.status === 400) {
+            alert("봇 계정에 대한 초대가 완료되지 않았습니다.");
+        }
+        if (response?.status === 500) {
+            alert("서버 에러가 발생했습니다. 다시 시도해 주세요");
+        }
+
+        router.push("/github");
     };
 
     return (
         <div className="w-full flex justify-center items-center pt-24">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmitRepository)}>
                 <div>
                     <DeliverInput
                         name="owner"
@@ -26,7 +41,7 @@ const RegisterTab = () => {
                 </div>
                 <div className="mt-[20px]">
                     <DeliverInput
-                        name="repository-name"
+                        name="repositoryName"
                         control={control}
                         title="레포지토리 이름 입력"
                         placeholder="ex) re-deliver"

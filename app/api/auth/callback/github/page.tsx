@@ -2,8 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-
-const API_URI = process.env.NEXT_PUBLIC_API_URL;
+import { postFetchAuth } from "@/apis/auth";
 
 export default function OAuthCallback() {
     const router = useRouter();
@@ -15,27 +14,17 @@ export default function OAuthCallback() {
 
             if (code) {
                 try {
-                    const response = await fetch(
-                        `${API_URI}/oauth2/success?code=${code}`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            credentials: "include",
+                    const response = await postFetchAuth(code);
+                    if (response) {
+                        if (!response.ok) {
+                            throw new Error("Failed to get token");
                         }
-                    );
-
-                    if (!response.ok) {
-                        throw new Error("Failed to get token");
-                    }
-
-                    const data = await response.json();
-
-                    if (data.accessToken) {
-                        Cookies.set("auth_token", data.accessToken, {
-                            expires: 7,
-                        });
+                        const data = await response.json();
+                        if (data.accessToken) {
+                            Cookies.set("auth_token", data.accessToken, {
+                                expires: 7,
+                            });
+                        }
                     }
 
                     router.push("/");
