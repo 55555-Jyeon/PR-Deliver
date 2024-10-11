@@ -8,12 +8,10 @@ import { useState } from "react";
 import { UserDashboardProps } from "./type";
 
 const UserDashboard = ({ userId }: UserDashboardProps) => {
-    console.log("userId:", userId);
     const router = useRouter();
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     const handleOptionClick = (option: UserDashboardOptionsType) => {
-        console.log("Option clicked:", option.title);
         if (typeof option.url === "function" && userId) {
             console.log("Navigating to:", option.url(userId));
             router.push(option.url(userId));
