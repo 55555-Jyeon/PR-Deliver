@@ -5,9 +5,8 @@ import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { UserDashboardProps } from "./type";
 
-const UserDashboard = ({ userId }: UserDashboardProps) => {
+const UserDashboard = ({ userId }: { userId: string }) => {
     const router = useRouter();
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 

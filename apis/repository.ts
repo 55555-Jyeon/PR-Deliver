@@ -21,7 +21,7 @@ export const getMyRepositoryList = async (
     owner: string
 ): Promise<MyRepositoryListType[]> => {
     const response = await ApiInstance({
-        endPoint: `/repositories?ownerLogin=${owner}`,
+        endPoint: `repositories?ownerLogin=${owner}`,
         method: "GET",
     });
 
