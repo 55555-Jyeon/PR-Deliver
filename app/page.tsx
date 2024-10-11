@@ -27,9 +27,8 @@ export default function Home() {
                 console.error("Failed to fetch user info:", error);
             }
         };
-
         fetchUserInfo();
-    }, [login]);
+    }, []);
 
     return (
         <main
