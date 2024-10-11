@@ -1,20 +1,33 @@
 "use client";
 
+import { UserDashboardOptionsType } from "@/constants/type";
 import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { UserDashboardProps } from "./type";
 
-const UserDashboard = () => {
+const UserDashboard = ({ userId }: UserDashboardProps) => {
+    console.log("userId:", userId);
     const router = useRouter();
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const handleOptionClick = (option: UserDashboardOptionsType) => {
+        console.log("Option clicked:", option.title);
+        if (typeof option.url === "function" && userId) {
+            console.log("Navigating to:", option.url(userId));
+            router.push(option.url(userId));
+        } else if (typeof option.url === "string") {
+            router.push(option.url);
+        }
+    };
 
     return (
         <div className="flex-center flex-row">
             {USER_DASHBOARD_OPTIONS.map((option, index) => (
                 <div
                     key={option.title}
-                    onClick={() => router.push(option.url)}
+                    onClick={() => handleOptionClick(option)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     className={`w-[244px] h-[300px] flex-center flex-col mr-[100px] border border-GREY-20 rounded-2xl cursor-pointer transition-all duration-300 ${

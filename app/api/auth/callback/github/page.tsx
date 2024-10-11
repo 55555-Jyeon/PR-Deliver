@@ -2,10 +2,12 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { postFetchAuth } from "@/apis/auth";
+import { getUserInfo, postFetchAuth } from "@/apis/auth";
+import { useUserStore } from "@/libs/zustand/user";
 
 export default function OAuthCallback() {
     const router = useRouter();
+    const { setUser } = useUserStore();
 
     useEffect(() => {
         const handleCallback = async () => {
@@ -24,6 +26,14 @@ export default function OAuthCallback() {
                             Cookies.set("auth_token", data.accessToken, {
                                 expires: 7,
                             });
+                            const userInfo = await getUserInfo();
+                            if (userInfo && userInfo.data) {
+                                setUser(
+                                    userInfo.data.memberId,
+                                    userInfo.data.login
+                                );
+                                console.log("userInfo", userInfo);
+                            }
                         }
                     }
 
