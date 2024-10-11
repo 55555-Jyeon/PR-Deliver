@@ -1,11 +1,11 @@
 import { createStore } from "zustand";
 
-interface UserState {
+type UserState = {
     userId: number | undefined;
     login: string | null;
     setUser: (userId: number, login: string) => void;
     setUserId: (login: string) => void;
-}
+};
 
 export const userStore = createStore<UserState>((set) => ({
     userId: undefined,

@@ -6,3 +6,11 @@ export type UserInfoType = {
         login: string;
     };
 };
+
+export type MyRepositoryListType = {
+    repositoryId: number;
+    fullName: string;
+    ownerLogin: string;
+    webhookUrl: string;
+    isActiveWebhook: boolean;
+};
