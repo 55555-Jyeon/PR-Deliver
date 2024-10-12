@@ -5,6 +5,7 @@ import { getMyRepositoryList } from "@/apis/repository";
 import { useUserStore } from "@/libs/zustand/user";
 import { MyRepositoryListType } from "@/type/user";
 import { useEffect, useState } from "react";
+import { RepositoryData } from "@/apis/type";
 
 const FetchRepositoryList = () => {
     const [repositories, setRepositories] = useState<MyRepositoryListType[]>(
@@ -13,8 +14,10 @@ const FetchRepositoryList = () => {
     const { login } = useUserStore();
 
     useEffect(() => {
+        console.log("실행");
         const fetchMyRepositories = async () => {
             if (login) {
+                console.log("login start");
                 try {
                     const data = await getMyRepositoryList(login);
                     setRepositories(Array.isArray(data) ? data : []);
@@ -27,6 +30,8 @@ const FetchRepositoryList = () => {
         };
         fetchMyRepositories();
     }, [login]);
+
+    console.log(repositories);
 
     return (
         <>

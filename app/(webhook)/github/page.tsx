@@ -6,18 +6,18 @@ import StepTemplate from "@/components/common/step-template";
 import { GitHubWebHook } from "@/constants/steps/github";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getFetchRepository } from "@/apis/repository";
-import { repoInfoType } from "./type";
+import { getMyRepositoryList } from "@/apis/repository";
+import { MyRepositoryListType } from "@/type/user";
 
 const RegisterGitHub = () => {
     const router = useRouter();
 
-    const [repoInfo, setRepoInfo] = useState<repoInfoType[]>([]);
+    const [repoInfo, setRepoInfo] = useState<MyRepositoryListType[]>([]);
     const [copyId, setCopyId] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchRepository = async () => {
-            const response = await getFetchRepository("ijimlnosk");
+            const response = await getMyRepositoryList("ijimlnosk");
             setRepoInfo(response.data);
         };
         fetchRepository();

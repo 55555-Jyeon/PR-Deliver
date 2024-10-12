@@ -1,5 +1,6 @@
 import { MyRepositoryListType } from "@/type/user";
 import { ApiInstance } from "./api-instance";
+import { RepositoryData } from "./type";
 
 export const postFetchRepository = async (fullName: string) => {
     const response = await ApiInstance({
@@ -19,7 +20,7 @@ export const postFetchRepository = async (fullName: string) => {
  */
 export const getMyRepositoryList = async (
     owner: string
-): Promise<MyRepositoryListType[]> => {
+): Promise<RepositoryData> => {
     const response = await ApiInstance({
         endPoint: `repositories?ownerLogin=${owner}`,
         method: "GET",
@@ -32,5 +33,5 @@ export const getMyRepositoryList = async (
     }
 
     const data = await response.json();
-    return data as MyRepositoryListType[];
+    return data as RepositoryData;
 };
