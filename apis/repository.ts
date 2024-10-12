@@ -8,3 +8,12 @@ export const postFetchRepository = async (fullName: string) => {
 
     return response;
 };
+
+export const getFetchRepository = async (ownerLogin: string) => {
+    const response = await ApiInstance({
+        endPoint: `repositories?ownerLogin=${ownerLogin}`,
+        method: "GET",
+    });
+
+    return response?.json();
+};
