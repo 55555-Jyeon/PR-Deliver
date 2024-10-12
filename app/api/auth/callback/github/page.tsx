@@ -32,7 +32,6 @@ export default function OAuthCallback() {
                                     userInfo.data.memberId,
                                     userInfo.data.login
                                 );
-                                console.log("userInfo", userInfo);
                             }
                         }
                     }

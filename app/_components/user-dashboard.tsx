@@ -12,7 +12,6 @@ const UserDashboard = ({ userId }: { userId: string }) => {
 
     const handleOptionClick = (option: UserDashboardOptionsType) => {
         if (typeof option.url === "function" && userId) {
-            console.log("Navigating to:", option.url(userId));
             router.push(option.url(userId));
         } else if (typeof option.url === "string") {
             router.push(option.url);
