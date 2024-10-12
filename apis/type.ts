@@ -1,4 +1,5 @@
 export type ApiInstanceProps = {
     endPoint: string;
-    method: string;
+    method: "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
+    body?: unknown;
 };
