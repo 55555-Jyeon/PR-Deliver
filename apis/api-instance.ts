@@ -4,7 +4,6 @@ import { ApiInstanceProps } from "./type";
 export const API_URI = process.env.NEXT_PUBLIC_API_URL;
 
 export const ApiInstance = async ({ endPoint, method }: ApiInstanceProps) => {
-    console.log(endPoint);
     const token = Cookies.get("auth_token");
     if (token) {
         const response = await fetch(`${API_URI}/${endPoint}`, {
