@@ -39,8 +39,7 @@ const RegisterGitHub = () => {
             />
             <div>
                 {repoInfo.map((item) => {
-                    const fullWebhookUrl = ` http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/
-                                ${item.webhookUrl}`;
+                    const fullWebhookUrl = `http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/${item.webhookUrl}`;
                     return (
                         <div key={item.repositoryId}>
                             <div>{item.fullName}</div>
