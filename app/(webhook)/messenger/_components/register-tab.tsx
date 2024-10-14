@@ -4,6 +4,7 @@ import { postFetchMessenger } from "@/apis/webhook";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
+import React, { useEffect, useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
@@ -13,26 +14,21 @@ import {
 
 const RegisterTab = () => {
     const { control, handleSubmit, register } = useForm();
+    const [selectedMessengerType, setSelectedMessengerType] = useState("");
 
-    // Messenger type controller
-    const { field } = useController({
-        name: "messengerType",
-        control,
-        rules: { required: true },
-        defaultValue: "",
-    });
+    const onMessengerTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSelectedMessengerType(value);
+    };
 
-    const onSubmit: SubmitHandler<FieldValues> = async ({
-        repositoryId,
-        messengerType,
-        webhookUrl,
-    }) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        const { repositoryId, messengerType, webhookUrl } = data;
+        console.log(data);
         const response = await postFetchMessenger({
             repositoryId,
             messengerType,
             webhookUrl,
         });
-
         console.log(response);
     };
 
@@ -55,9 +51,10 @@ const RegisterTab = () => {
                                     value={type.value}
                                     {...register("messengerType", {
                                         required: true,
+                                        onChange: onMessengerTypeChange,
                                     })}
                                     className={`mr-2 border ${
-                                        field.value === type.value
+                                        selectedMessengerType === type.value
                                             ? "border-BRAND-50 border-[6px]"
                                             : "border-GREY-20"
                                     }`}
@@ -67,9 +64,6 @@ const RegisterTab = () => {
                                         height: "20px",
                                         borderRadius: "50%",
                                     }}
-                                    onChange={(e) =>
-                                        field.onChange(e.target.value)
-                                    }
                                 />
                                 <p className="text-[13px] font-medium">
                                     {type.label}
@@ -90,7 +84,7 @@ const RegisterTab = () => {
                 <DeliverButton
                     label="등록하기"
                     length="full"
-                    onClick={() => alert("웹훅 등록 버튼 클릭")}
+                    onClick={handleSubmit(onSubmit)}
                 />
             </form>
         </div>
