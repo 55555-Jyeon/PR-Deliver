@@ -8,12 +8,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getMyRepositoryList } from "@/apis/repository";
 import { MyRepositoryListType } from "@/type/user";
+import WebhookList from "./_component/webhook-list";
+import Image from "next/image";
 
 const RegisterGitHub = () => {
     const router = useRouter();
 
     const [repoInfo, setRepoInfo] = useState<MyRepositoryListType[]>([]);
     const [copyId, setCopyId] = useState<number | null>(null);
+    const [isHookList, setIsHookList] = useState(true);
 
     useEffect(() => {
         const fetchRepository = async () => {
@@ -30,6 +33,10 @@ const RegisterGitHub = () => {
         });
     };
 
+    const handleHookList = () => {
+        setIsHookList(!isHookList);
+    };
+
     return (
         <div className="size-full flex-center flex-col">
             <PageDescription
@@ -37,33 +44,49 @@ const RegisterGitHub = () => {
                 title="웹훅 등록하기"
                 content="웹훅 등록 방법 안내"
             />
-            <div>
-                {repoInfo.map((item) => {
-                    const fullWebhookUrl = `http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/${item.webhookUrl}`;
-                    return (
-                        <div key={item.repositoryId}>
-                            <div>{item.fullName}</div>
-                            <div className="flex-center">
-                                <p>웹훅 URI : </p>
-                                <p className="ml-2">{fullWebhookUrl}</p>
-                                <button
-                                    onClick={() =>
-                                        copyToClipboard(
-                                            fullWebhookUrl,
-                                            item.repositoryId
-                                        )
-                                    }
-                                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                >
-                                    {copyId === item.repositoryId
-                                        ? "복사됨"
-                                        : "복사"}
-                                </button>
-                            </div>
-                        </div>
-                    );
-                })}
+            <div className="w-[1280px] mt-12">
+                <div
+                    className="w-[130px] h-[44px] font-semibold text-[16px] bg-SYSTEM-black text-GREY-10 rounded-lg flex-center cursor-pointer"
+                    onClick={handleHookList}
+                >
+                    <p className="pr-2">웹훅 리스트</p>
+                    {isHookList ? (
+                        <Image
+                            src={"/light/icons/up-arrow.svg"}
+                            width={20}
+                            height={20}
+                            alt="UP"
+                            className="transform scale-y-[-1]"
+                        />
+                    ) : (
+                        <Image
+                            src={"/light/icons/up-arrow.svg"}
+                            width={20}
+                            height={20}
+                            alt="UP"
+                        />
+                    )}
+                </div>
+
+                {isHookList ? (
+                    <div></div>
+                ) : (
+                    <div className="w-full flex justify-start">
+                        {repoInfo.map((item) => {
+                            const fullWebhookUrl = `http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/${item.webhookUrl}`;
+                            return (
+                                <WebhookList
+                                    item={item}
+                                    fullWebhookUrl={fullWebhookUrl}
+                                    copyId={copyId}
+                                    copyToClipboard={copyToClipboard}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
             </div>
+
             <div className="relative w-full h-max flex-center flex-col mb-[160px]">
                 {GitHubWebHook.map((step, index) => (
                     <StepTemplate

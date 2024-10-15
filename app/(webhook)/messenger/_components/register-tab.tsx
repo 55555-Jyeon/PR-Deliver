@@ -4,13 +4,8 @@ import { postFetchMessenger } from "@/apis/webhook";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
-import React, { useEffect, useState } from "react";
-import {
-    FieldValues,
-    SubmitHandler,
-    useController,
-    useForm,
-} from "react-hook-form";
+import React, { useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterTab = () => {
     const { control, handleSubmit, register } = useForm();
