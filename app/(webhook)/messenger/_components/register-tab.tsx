@@ -19,13 +19,11 @@ const RegisterTab = () => {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const { messengerType, webhookUrl } = data;
         const repositoryId = 11;
-        console.log(data, "data");
         const response = await postFetchMessenger({
             repositoryId,
             messengerType,
             webhookUrl,
         });
-        console.log(response, "response");
     };
 
     return (
