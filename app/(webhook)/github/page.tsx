@@ -76,6 +76,7 @@ const RegisterGitHub = () => {
                             const fullWebhookUrl = `http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/${item.webhookUrl}`;
                             return (
                                 <WebhookList
+                                    key={item.repositoryId}
                                     item={item}
                                     fullWebhookUrl={fullWebhookUrl}
                                     copyId={copyId}

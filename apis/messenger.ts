@@ -22,3 +22,16 @@ export const postFetchMessenger = async ({
     });
     return response?.json();
 };
+
+export const getFetchEnc = async (token: string) => {
+    const response = await ApiInstance({
+        endPoint: `/${token}`,
+        method: "GET",
+    });
+
+    if (!response) return;
+
+    const data = await response.json();
+
+    return data;
+};

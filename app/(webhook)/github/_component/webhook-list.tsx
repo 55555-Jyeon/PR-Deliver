@@ -1,11 +1,4 @@
-import { MyRepositoryListType } from "@/type/user";
-
-export type WebhookListProps = {
-    item: MyRepositoryListType;
-    fullWebhookUrl: string;
-    copyId: number | null;
-    copyToClipboard: (fullWebhookUrl: string, repositoryId: number) => void;
-};
+import { WebhookListProps } from "./type";
 
 const WebhookList = ({
     item,
@@ -14,10 +7,7 @@ const WebhookList = ({
     copyToClipboard,
 }: WebhookListProps) => {
     return (
-        <div
-            className="w-full flex justify-between mt-4 px-4 py-3 bg-GREY-10 rounded-lg"
-            key={item.repositoryId}
-        >
+        <div className="w-full flex justify-between mt-4 px-4 py-3 bg-GREY-10 rounded-lg">
             <div className="flex flex-row items-center">
                 <p className="mr-2">{item.fullName}</p>
                 <div className="w-1 h-[14px] flex-center relative">

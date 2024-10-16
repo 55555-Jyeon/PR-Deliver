@@ -1,6 +1,6 @@
 "use client";
 
-import { postFetchMessenger } from "@/apis/webhook";
+import { postFetchMessenger } from "@/apis/messenger";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
@@ -17,14 +17,15 @@ const RegisterTab = () => {
     };
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        const { repositoryId, messengerType, webhookUrl } = data;
-        console.log(data);
+        const { messengerType, webhookUrl } = data;
+        const repositoryId = 11;
+        console.log(data, "data");
         const response = await postFetchMessenger({
             repositoryId,
             messengerType,
             webhookUrl,
         });
-        console.log(response);
+        console.log(response, "response");
     };
 
     return (
@@ -70,7 +71,7 @@ const RegisterTab = () => {
                 {/* webhook url */}
                 <div className="mb-10">
                     <DeliverInput
-                        name="messenger webhook url"
+                        name="webhookUrl"
                         control={control}
                         title="웹훅 URL 입력"
                         placeholder="ex) https://discord.com/api/webhooks/12745805631387/s-AC"
