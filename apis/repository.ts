@@ -8,7 +8,13 @@ export const postFetchRepository = async (fullName: string) => {
         method: "POST",
     });
 
-    return response;
+    if (!response) {
+        throw new Error("레포지토리 등록에 실패하였습니다.");
+    }
+
+    const data = await response.json();
+
+    return data as MyRepositoryListType;
 };
 
 /**
@@ -33,5 +39,19 @@ export const getMyRepositoryList = async (
     }
 
     const data = await response.json();
+
     return data as RepositoryData;
+};
+
+export const deleteFetchRepository = async (repositoryId: number) => {
+    const response = await ApiInstance({
+        endPoint: `repositories/${repositoryId}`,
+        method: "DELETE",
+    });
+
+    if (!response) {
+        throw new Error("레포지토리 삭제에 실패했습니다.");
+    }
+
+    return response;
 };

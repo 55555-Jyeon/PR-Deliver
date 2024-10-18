@@ -1,9 +1,9 @@
 import { ApiInstance } from "./api-instance";
 
 export type PostFetchMessengerProps = {
-    repositoryId: number;
-    messengerType: string;
-    webhookUrl: string;
+    repositoryId: number | undefined;
+    messengerType: string | null;
+    webhookUrl: string | null;
 };
 
 export const postFetchMessenger = async ({
@@ -25,7 +25,7 @@ export const postFetchMessenger = async ({
 
 export const getFetchEnc = async (token: string) => {
     const response = await ApiInstance({
-        endPoint: `/${token}`,
+        endPoint: `messengers/applies?encryptedWebhookUrl=${token}`,
         method: "GET",
     });
 

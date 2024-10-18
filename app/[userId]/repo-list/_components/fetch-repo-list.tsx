@@ -1,7 +1,7 @@
 "use client";
 
 import { ShortenText } from "@/utils/shorten-text";
-import { getMyRepositoryList } from "@/apis/repository";
+import { deleteFetchRepository, getMyRepositoryList } from "@/apis/repository";
 import { useUserStore } from "@/libs/zustand/user";
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
@@ -15,6 +15,7 @@ const FetchRepositoryList = () => {
             if (login) {
                 try {
                     const data = await getMyRepositoryList(login);
+                    console.log(data);
                     setRepositories(data);
                 } catch {
                     throw new Error(
@@ -25,6 +26,10 @@ const FetchRepositoryList = () => {
         };
         fetchMyRepositories();
     }, []);
+
+    const handleDeleteRepository = async () => {
+        await deleteFetchRepository(27);
+    };
 
     if (!repositories) return <div>데이터가 없습니다</div>;
 
@@ -38,6 +43,7 @@ const FetchRepositoryList = () => {
                     <p className="flex-[3]">{ShortenText(repo.fullName, 50)}</p>
                     <p className="flex-[1.5]">{repo.ownerLogin}</p>
                     {/* <p className="flex-[1.5]">{repo.assignee}</p> */}
+                    <button onClick={handleDeleteRepository}>삭제</button>
                 </li>
             ))}
         </>

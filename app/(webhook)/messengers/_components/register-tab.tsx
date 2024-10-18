@@ -4,12 +4,15 @@ import { postFetchMessenger } from "@/apis/messenger";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
+import { useRepositoryStore } from "@/libs/zustand/repository";
+import { getSessionStorage } from "@/utils/storatge";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterTab = () => {
     const { control, handleSubmit, register } = useForm();
     const [selectedMessengerType, setSelectedMessengerType] = useState("");
+    const repositoryId = Number(getSessionStorage("repositoryId"));
 
     const onMessengerTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -18,12 +21,14 @@ const RegisterTab = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const { messengerType, webhookUrl } = data;
-        const repositoryId = 11;
+
         const response = await postFetchMessenger({
             repositoryId,
             messengerType,
             webhookUrl,
         });
+
+        console.log(response, "메신저 등록");
     };
 
     return (

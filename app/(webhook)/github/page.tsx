@@ -73,7 +73,7 @@ const RegisterGitHub = () => {
                 ) : (
                     <div className="w-full flex justify-start">
                         {repoInfo.map((item) => {
-                            const fullWebhookUrl = `http://ec2-3-36-51-88.ap-northeast-2.compute.amazonaws.com:8080/${item.webhookUrl}`;
+                            const fullWebhookUrl = `${process.env.NEXT_PUBLIC_API_URL}/${item.webhookUrl}`;
                             return (
                                 <WebhookList
                                     key={item.repositoryId}
@@ -102,7 +102,7 @@ const RegisterGitHub = () => {
                 <DeliverButton
                     length="smaller"
                     onClick={() => {
-                        router.push("/messenger");
+                        router.push("/messengers");
                     }}
                     label="완료했어요"
                 />

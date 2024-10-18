@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
 type RepositoryState = {
-    repositoryId: number;
-    fullName: string;
-    ownerLogin: string;
-    webHookUrl: string;
+    repositoryId: number | undefined;
+    fullName: string | null;
+    ownerLogin: string | null;
+    webhookUrl: string | null;
     isActiveWebhook: boolean;
 
     setRepository: (repo: Omit<RepositoryState, "setRepository">) => void;
@@ -12,10 +12,10 @@ type RepositoryState = {
 };
 
 export const useRepositoryStore = create<RepositoryState>((set) => ({
-    repositoryId: 0,
-    fullName: "",
-    ownerLogin: "",
-    webHookUrl: "",
+    repositoryId: undefined,
+    fullName: null,
+    ownerLogin: null,
+    webhookUrl: null,
     isActiveWebhook: false,
 
     setRepository: (repo) =>
@@ -23,7 +23,7 @@ export const useRepositoryStore = create<RepositoryState>((set) => ({
             repositoryId: repo.repositoryId,
             fullName: repo.fullName,
             ownerLogin: repo.ownerLogin,
-            webHookUrl: repo.webHookUrl,
+            webhookUrl: repo.webhookUrl,
             isActiveWebhook: repo.isActiveWebhook,
         }),
     toggleWebhookStatus: () =>
