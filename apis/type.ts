@@ -11,3 +11,9 @@ export type RepositoryData = {
     data: MyRepositoryListType[];
     status: string;
 };
+
+export type PostFetchMessengerProps = {
+    repositoryId: number | undefined;
+    messengerType: string | null;
+    webhookUrl: string | null;
+};

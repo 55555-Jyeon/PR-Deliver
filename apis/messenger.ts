@@ -1,10 +1,5 @@
 import { ApiInstance } from "./api-instance";
-
-export type PostFetchMessengerProps = {
-    repositoryId: number | undefined;
-    messengerType: string | null;
-    webhookUrl: string | null;
-};
+import { PostFetchMessengerProps } from "./type";
 
 export const postFetchMessenger = async ({
     repositoryId,

@@ -4,7 +4,7 @@ import { postFetchEnc, postFetchMessenger } from "@/apis/messenger";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
-import { getSessionStorage } from "@/utils/storatge";
+import { getSessionStorage } from "@/utils/storage";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
