@@ -44,7 +44,13 @@ export default function Home() {
                     <AuthLoginButton />
                 </>
             )} */}
-            <DeliverModal />
+            <DeliverModal
+                isOpen={true}
+                isSuccess={false}
+                title="ERROR"
+                content="error occurred!"
+                onClose={() => alert("error!")}
+            />
         </main>
     );
 }

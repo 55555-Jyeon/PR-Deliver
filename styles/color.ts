@@ -2,7 +2,6 @@ export const COLORS = {
     SYSTEM: {
         black: "#0C0C0D",
         white: "#ffffff",
-        red: "#FF1F00",
     },
     GREY: {
         10: "#F8F9FC",
@@ -16,6 +15,11 @@ export const COLORS = {
         90: "#282929",
     },
     BRAND: {
+        30: "#F3EDFD",
         50: "#6317E5",
+    },
+    ERROR: {
+        10: "#FFFAFA",
+        50: "#FF1F00",
     },
 } as const;

@@ -21,3 +21,20 @@ export type CustomInputProps = {
     placeholder: string;
     className?: string;
 } & UseControllerProps;
+
+export type OverlayProps = {
+    isOpen: boolean;
+    handleOverlaySubmit?: (e: React.FormEvent) => void;
+    onClick: () => void;
+    children: React.ReactNode;
+    text?: string;
+    textColor?: string;
+};
+
+export type DeliverModalProps = {
+    isSuccess: boolean;
+    isOpen: boolean;
+    onClose: () => void;
+    title: string;
+    content: string;
+};
