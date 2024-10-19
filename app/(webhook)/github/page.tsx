@@ -10,6 +10,7 @@ import { getMyRepositoryList } from "@/apis/repository";
 import { MyRepositoryListType } from "@/type/user";
 import WebhookList from "./_component/webhook-list";
 import Image from "next/image";
+import { userStore, useUserStore } from "@/libs/zustand/user";
 
 const RegisterGitHub = () => {
     const router = useRouter();
@@ -17,10 +18,14 @@ const RegisterGitHub = () => {
     const [repoInfo, setRepoInfo] = useState<MyRepositoryListType[]>([]);
     const [copyId, setCopyId] = useState<number | null>(null);
     const [isHookList, setIsHookList] = useState(true);
+    const { login } = useUserStore();
 
     useEffect(() => {
         const fetchRepository = async () => {
-            const response = await getMyRepositoryList("ijimlnosk");
+            if (!login) {
+                throw new Error("유저정보를 받아오지 못했습니다.");
+            }
+            const response = await getMyRepositoryList(login);
             setRepoInfo(response.data);
         };
         fetchRepository();
