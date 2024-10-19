@@ -1,6 +1,7 @@
 import { postFetchRepository } from "@/apis/repository";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
+import { setSessionStorage } from "@/utils/storage";
 import { useRouter } from "next/navigation";
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -15,15 +16,12 @@ const RegisterTab = () => {
     const onSubmitRepository: SubmitHandler<FieldValues> = async (data) => {
         const fullName = `${data.owner}/${data.repositoryName}`;
         const response = await postFetchRepository(fullName);
-        if (response?.status === 400) {
-            alert("봇 계정에 대한 초대가 완료되지 않았습니다.");
-            return;
+        if (response) {
+            setSessionStorage("repositoryId", response.repositoryId.toString());
+            router.push("/github");
+        } else {
+            throw new Error("레포지토리 등록에 실패했습니다.");
         }
-        if (response?.status === 500) {
-            alert("서버 에러가 발생했습니다. 다시 시도해 주세요");
-            return;
-        }
-        router.push("/github");
     };
 
     return (
