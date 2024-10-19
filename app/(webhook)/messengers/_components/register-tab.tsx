@@ -4,7 +4,6 @@ import { postFetchEnc, postFetchMessenger } from "@/apis/messenger";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
-import { useMessengerStore } from "@/libs/zustand/messenger";
 import { getSessionStorage } from "@/utils/storatge";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -15,7 +14,6 @@ const RegisterTab = () => {
     const { control, handleSubmit, register } = useForm();
     const [selectedMessengerType, setSelectedMessengerType] = useState("");
     const repositoryId = Number(getSessionStorage("repositoryId"));
-    const { messengerWebhookUrl, setWebhookUrl } = useMessengerStore();
 
     const onMessengerTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -30,7 +28,6 @@ const RegisterTab = () => {
             messengerType,
             webhookUrl,
         });
-        setWebhookUrl(response.data.encryptedWebhookUrl);
         if (response.status === "Success") {
             const fetchEnc = async () => {
                 const responseMessenger = await postFetchEnc(
