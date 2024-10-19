@@ -23,15 +23,19 @@ export const postFetchMessenger = async ({
     return response?.json();
 };
 
-export const getFetchEnc = async (token: string) => {
+export const postFetchEnc = async (token: string | null) => {
+    if (!token) {
+        throw new Error("URL이 없습니다.");
+    }
+
     const response = await ApiInstance({
         endPoint: `messengers/applies?encryptedWebhookUrl=${token}`,
-        method: "GET",
+        method: "POST",
     });
 
-    if (!response) return;
+    if (!response) {
+        throw new Error("메신저 활성화에 실패했습니다.");
+    }
 
-    const data = await response.json();
-
-    return data;
+    return response;
 };

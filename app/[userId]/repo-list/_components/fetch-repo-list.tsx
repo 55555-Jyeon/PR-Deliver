@@ -15,7 +15,6 @@ const FetchRepositoryList = () => {
             if (login) {
                 try {
                     const data = await getMyRepositoryList(login);
-                    console.log(data);
                     setRepositories(data);
                 } catch {
                     throw new Error(
@@ -28,7 +27,7 @@ const FetchRepositoryList = () => {
     }, []);
 
     const handleDeleteRepository = async () => {
-        await deleteFetchRepository(27);
+        await deleteFetchRepository(39);
     };
 
     if (!repositories) return <div>데이터가 없습니다</div>;

@@ -1,18 +1,21 @@
 "use client";
 
-import { postFetchMessenger } from "@/apis/messenger";
+import { postFetchEnc, postFetchMessenger } from "@/apis/messenger";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
 import { MESSENGER_TYPES } from "@/constants/register/messenger-type";
-import { useRepositoryStore } from "@/libs/zustand/repository";
+import { useMessengerStore } from "@/libs/zustand/messenger";
 import { getSessionStorage } from "@/utils/storatge";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const RegisterTab = () => {
+    const router = useRouter();
     const { control, handleSubmit, register } = useForm();
     const [selectedMessengerType, setSelectedMessengerType] = useState("");
     const repositoryId = Number(getSessionStorage("repositoryId"));
+    const { messengerWebhookUrl, setWebhookUrl } = useMessengerStore();
 
     const onMessengerTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -27,8 +30,21 @@ const RegisterTab = () => {
             messengerType,
             webhookUrl,
         });
-
-        console.log(response, "메신저 등록");
+        setWebhookUrl(response.data.encryptedWebhookUrl);
+        if (response.status === "Success") {
+            const fetchEnc = async () => {
+                const responseMessenger = await postFetchEnc(
+                    response.data.encryptedWebhookUrl
+                );
+                if (responseMessenger.status === 200) {
+                    alert(
+                        "메신저 활성화에 성공했습니다. 메인 페이지로 이동합니다."
+                    );
+                    router.push("/");
+                }
+            };
+            fetchEnc();
+        }
     };
 
     return (
