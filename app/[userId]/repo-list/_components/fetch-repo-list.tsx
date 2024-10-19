@@ -26,10 +26,6 @@ const FetchRepositoryList = () => {
         fetchMyRepositories();
     }, []);
 
-    const handleDeleteRepository = async () => {
-        await deleteFetchRepository(39);
-    };
-
     if (!repositories) return <div>데이터가 없습니다</div>;
 
     return (
@@ -42,7 +38,6 @@ const FetchRepositoryList = () => {
                     <p className="flex-[3]">{ShortenText(repo.fullName, 50)}</p>
                     <p className="flex-[1.5]">{repo.ownerLogin}</p>
                     {/* <p className="flex-[1.5]">{repo.assignee}</p> */}
-                    <button onClick={handleDeleteRepository}>삭제</button>
                 </li>
             ))}
         </>
