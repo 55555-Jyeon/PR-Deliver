@@ -48,7 +48,12 @@ const RegisterTab = () => {
                     />
                 </div>
                 <div className="mt-10">
-                    <DeliverButton type="submit" length="full" label="다음" />
+                    <DeliverButton
+                        type="submit"
+                        length="full"
+                        label="다음"
+                        isModal={false}
+                    />
                 </div>
             </form>
         </div>

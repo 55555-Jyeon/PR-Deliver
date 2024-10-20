@@ -97,6 +97,7 @@ const RegisterTab = () => {
                     label="등록하기"
                     length="full"
                     onClick={handleSubmit(onSubmit)}
+                    isModal={false}
                 />
             </form>
         </div>

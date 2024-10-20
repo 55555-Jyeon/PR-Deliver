@@ -110,6 +110,7 @@ const RegisterGitHub = () => {
                         router.push("/messengers");
                     }}
                     label="완료했어요"
+                    isModal={false}
                 />
             </div>
         </div>

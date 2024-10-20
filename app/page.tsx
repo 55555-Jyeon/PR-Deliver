@@ -7,7 +7,6 @@ import UserDashboard from "./_components/user-dashboard";
 import Cookies from "js-cookie";
 import { useUserStore } from "@/libs/zustand/user";
 import { getUserInfo } from "@/apis/auth";
-import DeliverModal from "@/components/common/modal";
 
 export default function Home() {
     const [token, setToken] = useState<string | undefined>("");
@@ -36,23 +35,14 @@ export default function Home() {
             className="absolute w-full flex-center flex-col"
             style={{ height: `calc(100vh - 180px)` }}
         >
-            {/*             {token && login ? (
+            {token && login ? (
                 <UserDashboard userId={login} />
             ) : (
                 <>
                     <MainDescription />
                     <AuthLoginButton />
                 </>
-            )} */}
-            <DeliverModal
-                isOpen={true}
-                isSuccess={false}
-                title="ERROR"
-                content="oops! error occured! plz try again."
-                onClose={() => alert("error!")}
-                onConfirm={() => alert("error!")}
-                buttonText="confirm"
-            />
+            )}
         </main>
     );
 }
