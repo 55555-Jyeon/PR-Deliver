@@ -4,6 +4,7 @@ import ERROR from "@/public/icons/error.svg";
 import Overlay from "./overlay";
 import { DeliverModalProps } from "./type";
 import { ShortenText } from "@/utils/shorten-text";
+import DeliverButton from "./button";
 
 /**
  * @component DeliverModal
@@ -58,12 +59,12 @@ const DeliverModal = ({
                             {ShortenText(content, 80)}
                         </p>
                     </div>
-                    <button
+                    <DeliverButton
                         onClick={onConfirm}
-                        className={`w-[320px] h-[44px] rounded-lg ${buttonBgColor} text-SYSTEM-white`}
-                    >
-                        {buttonText}
-                    </button>
+                        label={buttonText}
+                        isModal={true}
+                        buttonBgColor={buttonBgColor}
+                    />
                 </div>
             </div>
         </Overlay>

@@ -11,9 +11,11 @@ export type StepTemplateProps = {
 export type DeliverButtonProps = {
     isActive?: boolean;
     onClick?: () => void;
-    length: "smaller" | "full";
+    length?: "smaller" | "full";
     label: string;
     type?: "button" | "submit";
+    isModal: boolean;
+    buttonBgColor?: string;
 };
 
 export type CustomInputProps = {
