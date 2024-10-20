@@ -11,9 +11,11 @@ export type StepTemplateProps = {
 export type DeliverButtonProps = {
     isActive?: boolean;
     onClick?: () => void;
-    length: "smaller" | "full";
+    length?: "smaller" | "full";
     label: string;
     type?: "button" | "submit";
+    isModal: boolean;
+    buttonBgColor?: string;
 };
 
 export type CustomInputProps = {
@@ -21,3 +23,19 @@ export type CustomInputProps = {
     placeholder: string;
     className?: string;
 } & UseControllerProps;
+
+export type OverlayProps = {
+    isOpen: boolean;
+    onClick: () => void;
+    children: React.ReactNode;
+};
+
+export type DeliverModalProps = {
+    isSuccess: boolean;
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm: () => void;
+    title: string;
+    content: string;
+    buttonText: string;
+};
