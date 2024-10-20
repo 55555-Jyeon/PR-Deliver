@@ -3,13 +3,26 @@ import SUCCESS from "@/public/icons/success.svg";
 import ERROR from "@/public/icons/error.svg";
 import Overlay from "./overlay";
 import { DeliverModalProps } from "./type";
+import { ShortenText } from "@/utils/shorten-text";
 
+/**
+ * @component DeliverModal
+ *
+ * @param {boolean} isSuccess - 성공 여부에 따라 다른 아이콘과 스타일을 적용
+ * @param {boolean} isOpen - 모달이 열려 있는지 여부
+ * @param {Function} onClose - 모달을 닫을 때 호출되는 함수
+ * @param {Function} onConfirm - 확인 버튼을 눌렀을 때 호출되는 함수
+ * @param {string} title - 모달의 제목
+ * @param {string} content - 모달의 본문 내용
+ */
 const DeliverModal = ({
     isSuccess,
     isOpen,
     onClose,
+    onConfirm,
     title,
     content,
+    buttonText,
 }: DeliverModalProps) => {
     // success 여부에 따라 달라지는 css
     const Icon = isSuccess ? SUCCESS : ERROR;
@@ -18,12 +31,8 @@ const DeliverModal = ({
 
     if (!isOpen) return null;
     return (
-        <Overlay
-            isOpen={isOpen}
-            onClick={onClose}
-            handleOverlaySubmit={onClose}
-        >
-            <div className="relative w-[360px] h-[274px] rounded-2xl p-5 bg-SYSTEM-white">
+        <Overlay isOpen={isOpen} onClick={onClose}>
+            <div className="relative w-[360px] h-full rounded-2xl p-5 bg-SYSTEM-white">
                 <Image
                     width={24}
                     height={24}
@@ -45,12 +54,15 @@ const DeliverModal = ({
                     </div>
                     <div className="flex-center flex-col mt-3 mb-8">
                         <h1 className="my-3 text-[18px] font-bold">{title}</h1>
-                        <p className="text-[14px]">{content}</p>
+                        <p className="text-[14px] text-center">
+                            {ShortenText(content, 80)}
+                        </p>
                     </div>
                     <button
+                        onClick={onConfirm}
                         className={`w-[320px] h-[44px] rounded-lg ${buttonBgColor} text-SYSTEM-white`}
                     >
-                        confirm
+                        {buttonText}
                     </button>
                 </div>
             </div>

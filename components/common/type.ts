@@ -24,17 +24,16 @@ export type CustomInputProps = {
 
 export type OverlayProps = {
     isOpen: boolean;
-    handleOverlaySubmit?: (e: React.FormEvent) => void;
     onClick: () => void;
     children: React.ReactNode;
-    text?: string;
-    textColor?: string;
 };
 
 export type DeliverModalProps = {
     isSuccess: boolean;
     isOpen: boolean;
     onClose: () => void;
+    onConfirm: () => void;
     title: string;
     content: string;
+    buttonText: string;
 };

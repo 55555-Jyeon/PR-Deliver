@@ -48,8 +48,10 @@ export default function Home() {
                 isOpen={true}
                 isSuccess={false}
                 title="ERROR"
-                content="error occurred!"
+                content="oops! error occured! plz try again."
                 onClose={() => alert("error!")}
+                onConfirm={() => alert("error!")}
+                buttonText="confirm"
             />
         </main>
     );
