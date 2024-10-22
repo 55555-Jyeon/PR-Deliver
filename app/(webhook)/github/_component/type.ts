@@ -6,3 +6,14 @@ export type WebhookListProps = {
     copyId: number | null;
     copyToClipboard: (fullWebhookUrl: string, repositoryId: number) => void;
 };
+
+export type WebhookListToggleProps = {
+    isOpen: boolean;
+    onClick: () => void;
+};
+
+export type WebhookListContentProps = {
+    repoInfo: MyRepositoryListType[];
+    copyId: number | null;
+    copyToClipboard: (text: string, id: number) => void;
+};
