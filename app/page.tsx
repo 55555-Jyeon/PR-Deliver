@@ -11,9 +11,9 @@ import { UserInfoType } from "./user-dashboard/type";
 export default function Home() {
     const router = useRouter();
     const [token, setToken] = useState<string | undefined>("");
-    const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
 
     useEffect(() => {
+        const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
         const fetchUserInfo = async () => {
             try {
                 const authToken = Cookies.get("auth_token");

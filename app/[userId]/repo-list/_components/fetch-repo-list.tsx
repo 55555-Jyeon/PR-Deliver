@@ -2,19 +2,21 @@
 
 import { ShortenText } from "@/utils/shorten-text";
 import { deleteFetchRepository, getMyRepositoryList } from "@/apis/repository";
-import { useUserStore } from "@/libs/zustand/user";
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
+import { getSessionStorageObject } from "@/utils/storage";
+import { UserInfoType } from "@/app/user-dashboard/type";
 
 const FetchRepositoryList = () => {
     const [repositories, setRepositories] = useState<RepositoryData>();
-    const { login } = useUserStore();
 
     useEffect(() => {
+        const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
+
         const fetchMyRepositories = async () => {
-            if (login) {
+            if (userInfo) {
                 try {
-                    const data = await getMyRepositoryList(login);
+                    const data = await getMyRepositoryList(userInfo.login);
                     setRepositories(data);
                 } catch {
                     throw new Error(
