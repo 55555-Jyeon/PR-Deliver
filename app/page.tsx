@@ -3,14 +3,15 @@
 import { useEffect, useState } from "react";
 import AuthLoginButton from "./_components/auth-login-button";
 import MainDescription from "./_components/description";
-import UserDashboard from "./_components/user-dashboard";
 import Cookies from "js-cookie";
-import { useUserStore } from "@/libs/zustand/user";
-import { getUserInfo } from "@/apis/auth";
+import { useRouter } from "next/navigation";
+import { getSessionStorageObject } from "@/utils/storage";
+import { UserInfoType } from "./user-dashboard/type";
 
 export default function Home() {
+    const router = useRouter();
     const [token, setToken] = useState<string | undefined>("");
-    const { login, setUser, setUserId } = useUserStore();
+    const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -18,10 +19,10 @@ export default function Home() {
                 const authToken = Cookies.get("auth_token");
                 setToken(authToken);
 
-                if (authToken && !login) {
-                    const userInfo = await getUserInfo();
-                    setUser(userInfo.data.memberId, userInfo.data.login);
-                    setUserId(userInfo.data.login);
+                if (token && userInfo) {
+                    router.push("/user-dashboard");
+                } else {
+                    router.push("/");
                 }
             } catch (error) {
                 console.error("Failed to fetch user info:", error);
@@ -35,14 +36,10 @@ export default function Home() {
             className="absolute w-full flex-center flex-col"
             style={{ height: `calc(100vh - 180px)` }}
         >
-            {token && login ? (
-                <UserDashboard userId={login} />
-            ) : (
-                <>
-                    <MainDescription />
-                    <AuthLoginButton />
-                </>
-            )}
+            <>
+                <MainDescription />
+                <AuthLoginButton />
+            </>
         </main>
     );
 }
