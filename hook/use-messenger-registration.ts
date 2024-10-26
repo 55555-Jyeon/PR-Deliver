@@ -4,7 +4,7 @@ import { getSessionStorage } from "@/utils/storage";
 import { useRouter } from "next/navigation";
 import { MessengerRegistrationReturnType } from "./type";
 import { FieldValues, useForm } from "react-hook-form";
-import { MessengerFormFields } from "@/app/(webhook)/messengers/_components/register/type";
+import { MessengerFormFields } from "@/type/messenger";
 
 export const useMessengerRegistration = (): MessengerRegistrationReturnType => {
     const router = useRouter();
