@@ -1,7 +1,7 @@
 "use client";
 
 import { ShortenText } from "@/utils/shorten-text";
-import { deleteFetchRepository, getMyRepositoryList } from "@/apis/repository";
+import { getMyRepositoryList } from "@/apis/repository";
 import { useUserStore } from "@/libs/zustand/user";
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
