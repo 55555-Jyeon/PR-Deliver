@@ -3,17 +3,18 @@
 import SideNavigation from "./_components/side-nav";
 import { usePathname } from "next/navigation";
 import { UserLayoutProps } from "./type";
+import TabTitle from "./_components/tab-title";
 
 export default function UserLayout({ children, params }: UserLayoutProps) {
-  const pathname = usePathname();
-  const activeTab = pathname.endsWith("/custom-message")
-    ? "custom-message"
-    : "repo-list";
+    const pathname = usePathname();
+    const activeTab = pathname.endsWith("/custom-message")
+        ? "custom-message"
+        : "repo-list";
 
-  return (
-    <div className="flex">
-      <SideNavigation activeTab={activeTab} userId={params.userId} />
-      <div className="flex-grow bg-[#fcfcfc]">{children}</div>
-    </div>
-  );
+    return (
+        <div className="relative flex">
+            <SideNavigation activeTab={activeTab} userId={params.userId} />
+            <div className="flex-grow bg-[#fcfcfc]">{children}</div>
+        </div>
+    );
 }

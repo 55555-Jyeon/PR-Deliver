@@ -37,7 +37,6 @@ const FetchRepositoryList = () => {
                 >
                     <p className="flex-[3]">{ShortenText(repo.fullName, 50)}</p>
                     <p className="flex-[1.5]">{repo.ownerLogin}</p>
-                    {/* <p className="flex-[1.5]">{repo.assignee}</p> */}
                 </li>
             ))}
         </>
