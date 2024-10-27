@@ -5,6 +5,7 @@ import { getMyRepositoryList } from "@/apis/repository";
 import { useUserStore } from "@/libs/zustand/user";
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
+import EmptyRepoList from "./empty-repo-list";
 
 const FetchRepositoryList = () => {
     const [repositories, setRepositories] = useState<RepositoryData>();
@@ -26,20 +27,23 @@ const FetchRepositoryList = () => {
         fetchMyRepositories();
     }, []);
 
-    if (!repositories) return <div>데이터가 없습니다</div>;
-
+    if (!repositories) return <EmptyRepoList />;
     return (
-        <>
+        <ul className="grid grid-cols-4 grid-rows-6 gap-4">
             {repositories.data.map((repo, index) => (
                 <li
                     key={index}
-                    className="w-full h-[68px] flex-items bg-SYSTEM-white rounded-[12px] px-6 my-3 text-SYSTEM-black"
+                    className="w-[308px] h-[94px] rounded-[10px] p-5 bg-SYSTEM-white border border-GREY-20 flex flex-col items-start justify-between"
                 >
-                    <p className="flex-[3]">{ShortenText(repo.fullName, 50)}</p>
-                    <p className="flex-[1.5]">{repo.ownerLogin}</p>
+                    <span className="w-fit px-2.5 py-[6px] rounded-full text-[14px] font-semibold text-GREY-90 bg-GREY-10">
+                        {repo.ownerLogin}
+                    </span>
+                    <p className="text-[13px] font-normal text-GREY-80">
+                        {ShortenText(repo.fullName, 50)}
+                    </p>
                 </li>
             ))}
-        </>
+        </ul>
     );
 };
 
