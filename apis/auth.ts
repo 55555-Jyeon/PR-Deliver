@@ -1,6 +1,6 @@
 import { UserInfoType } from "@/type/user";
 import { API_URI, ApiInstance } from "./api-instance";
-import { userStore } from "@/libs/zustand/user";
+import { setSessionStorageObject } from "@/utils/storage";
 
 export const postFetchAuth = async (code: string) => {
     const response = await fetch(`${API_URI}/oauth2/success?code=${code}`, {
@@ -40,8 +40,6 @@ export const getUserInfo = async (): Promise<UserInfoType> => {
     }
 
     const data = await response.json();
-    const { userId, login } = data;
-    userStore.getState().setUser(userId, login);
 
     return data as UserInfoType;
 };
