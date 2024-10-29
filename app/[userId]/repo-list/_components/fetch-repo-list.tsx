@@ -11,7 +11,7 @@ const FetchRepositoryList = () => {
     const [repositories, setRepositories] = useState<RepositoryData>();
     const { login } = useUserStore();
 
-    /*     useEffect(() => {
+    useEffect(() => {
         const fetchMyRepositories = async () => {
             if (login) {
                 try {
@@ -25,9 +25,7 @@ const FetchRepositoryList = () => {
             }
         };
         fetchMyRepositories();
-    }, []); */
-
-    const sampleData = [];
+    }, []);
 
     if (!repositories) return <EmptyRepoList />;
     return (

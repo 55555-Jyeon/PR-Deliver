@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const EmptyRepoList = () => {
+    const router = useRouter();
+
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-[1000px]">
             <div className="h-full flex-center flex-col">
                 <Image
                     src={"/images/docs.svg"}
@@ -16,7 +21,10 @@ const EmptyRepoList = () => {
                 <p className="text-[14px] font-normal text-GREY-90 text-center">
                     표시할 데이터가 없습니다. <br /> 레포지토리를 등록해주세요.
                 </p>
-                <button className="bg-BRAND-50 text-SYSTEM-white w-[206px] h-[52px] rounded-[10px] text-[14px] mt-8">
+                <button
+                    onClick={() => router.push("/github")}
+                    className="bg-BRAND-50 text-SYSTEM-white w-[206px] h-[52px] rounded-[10px] text-[14px] mt-8"
+                >
                     레포지토리 등록하러 가기
                 </button>
             </div>
