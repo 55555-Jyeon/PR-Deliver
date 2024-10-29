@@ -3,7 +3,6 @@
 import SideNavigation from "./_components/side-nav";
 import { usePathname } from "next/navigation";
 import { UserLayoutProps } from "./type";
-import TabTitle from "./_components/tab-title";
 
 export default function UserLayout({ children, params }: UserLayoutProps) {
     const pathname = usePathname();
