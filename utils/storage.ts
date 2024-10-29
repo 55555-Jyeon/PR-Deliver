@@ -11,6 +11,7 @@ export const setSessionStorageObject = (key: string, value: Object) => {
 };
 
 export const getSessionStorageObject = (key: string) => {
+    if (typeof window === "undefined") return null;
     const item = sessionStorage.getItem(key);
     return item ? JSON.parse(item) : null;
 };

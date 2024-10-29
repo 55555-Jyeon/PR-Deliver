@@ -42,7 +42,7 @@ export default function OAuthCallback() {
         };
 
         handleCallback();
-    }, [router]);
+    }, []);
 
     return <div>처리 중...</div>;
 }

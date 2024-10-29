@@ -31,7 +31,7 @@ const FetchRepositoryList = () => {
     if (!repositories) return <div>데이터가 없습니다</div>;
 
     const handleDelete = async () => {
-        await deleteFetchRepository(43);
+        await deleteFetchRepository(48);
     };
 
     return (
