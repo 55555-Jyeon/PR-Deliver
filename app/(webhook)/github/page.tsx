@@ -13,13 +13,17 @@ import WebhookListContent from "./_component/webhook-list-content";
 
 const RegisterGitHub = () => {
     const router = useRouter();
-    const { repoInfo } = useRepository();
+    const { repoInfo, isLoading } = useRepository();
     const { copyId, copyToClipboard } = useClipboard();
     const [isHookList, setIsHookList] = useState(true);
 
     const handleHookList = () => {
         setIsHookList(!isHookList);
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="size-full flex-center flex-col">
@@ -33,8 +37,7 @@ const RegisterGitHub = () => {
                     isOpen={isHookList}
                     onClick={handleHookList}
                 />
-
-                {isHookList && (
+                {isHookList && repoInfo && (
                     <WebhookListContent
                         repoInfo={repoInfo}
                         copyId={copyId}

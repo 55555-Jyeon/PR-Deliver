@@ -1,6 +1,7 @@
 import { getMyRepositoryList } from "@/apis/repository";
-import { useUserStore } from "@/libs/zustand/user";
+import { UserInfoType } from "@/app/user-dashboard/type";
 import { MyRepositoryListType } from "@/type/user";
+import { getSessionStorageObject } from "@/utils/storage";
 import { useEffect, useState } from "react";
 
 /**
@@ -14,18 +15,27 @@ import { useEffect, useState } from "react";
 
 export const useRepository = () => {
     const [repoInfo, setRepoInfo] = useState<MyRepositoryListType[]>([]);
-    const { login } = useUserStore();
+    const [isLoading, setIsLoading] = useState(false);
+    const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
 
     useEffect(() => {
         const fetchRepository = async () => {
-            if (!login) {
+            if (!userInfo) {
                 throw new Error("유저 정보를 받아오지 못했습니다.");
             }
-            const response = await getMyRepositoryList(login);
-            setRepoInfo(response.data);
+            setIsLoading(true);
+            try {
+                const response = await getMyRepositoryList(userInfo?.login);
+                setRepoInfo(response.data);
+                setIsLoading(false);
+            } catch (error) {
+                throw new Error(
+                    "레포지토리를 불러오는 중 오류가 발생했습니다."
+                );
+            }
         };
         fetchRepository();
-    }, [login]);
+    }, [userInfo?.login]);
 
-    return { repoInfo };
+    return { repoInfo, isLoading };
 };
