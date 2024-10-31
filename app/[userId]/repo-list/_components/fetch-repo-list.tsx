@@ -1,21 +1,23 @@
 "use client";
 
-import { ShortenText } from "@/utils/shorten-text";
-import { getMyRepositoryList } from "@/apis/repository";
-import { useUserStore } from "@/libs/zustand/user";
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
+import { getMyRepositoryList } from "@/apis/repository";
+import { getSessionStorageObject } from "@/utils/storage";
+import { ShortenText } from "@/utils/shorten-text";
+import { UserInfoType } from "@/app/user-dashboard/type";
 import EmptyRepoList from "./empty-repo-list";
 
 const FetchRepositoryList = () => {
     const [repositories, setRepositories] = useState<RepositoryData>();
-    const { login } = useUserStore();
 
     useEffect(() => {
+        const userInfo = getSessionStorageObject("userInfo") as UserInfoType;
+
         const fetchMyRepositories = async () => {
-            if (login) {
+            if (userInfo) {
                 try {
-                    const data = await getMyRepositoryList(login);
+                    const data = await getMyRepositoryList(userInfo.login);
                     setRepositories(data);
                 } catch {
                     throw new Error(
@@ -26,6 +28,8 @@ const FetchRepositoryList = () => {
         };
         fetchMyRepositories();
     }, []);
+
+    // const handleDelete = async () => {await deleteFetchRepository(48);};
 
     if (!repositories) return <EmptyRepoList />;
     return (

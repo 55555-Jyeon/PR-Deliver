@@ -3,11 +3,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { getUserInfo, postFetchAuth } from "@/apis/auth";
-import { useUserStore } from "@/libs/zustand/user";
+import { setSessionStorageObject } from "@/utils/storage";
 
 export default function OAuthCallback() {
     const router = useRouter();
-    const { setUser } = useUserStore();
 
     useEffect(() => {
         const handleCallback = async () => {
@@ -28,15 +27,14 @@ export default function OAuthCallback() {
                             });
                             const userInfo = await getUserInfo();
                             if (userInfo && userInfo.data) {
-                                setUser(
-                                    userInfo.data.memberId,
-                                    userInfo.data.login
+                                setSessionStorageObject(
+                                    "userInfo",
+                                    userInfo.data
                                 );
+                                router.push("/user-dashboard");
                             }
                         }
                     }
-
-                    router.push("/");
                 } catch (error) {
                     console.error("Error during token exchange:", error);
                 }
@@ -44,7 +42,7 @@ export default function OAuthCallback() {
         };
 
         handleCallback();
-    }, [router]);
+    }, []);
 
     return <div>처리 중...</div>;
 }
