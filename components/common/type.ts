@@ -16,6 +16,8 @@ export type DeliverButtonProps = {
     type?: "button" | "submit";
     isModal: boolean;
     buttonBgColor?: string;
+    buttonTextColor?: string;
+    buttonActive?: boolean;
 };
 
 export type CustomInputProps = {
@@ -34,8 +36,11 @@ export type DeliverModalProps = {
     isSuccess: boolean;
     isOpen: boolean;
     onClose: () => void;
+    onReturn?: () => void;
     onConfirm: () => void;
     title: string;
     content: string;
+    content2?: string;
     buttonText: string;
+    returnButtonText?: string;
 };
