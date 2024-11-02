@@ -18,9 +18,9 @@ import { MessengerFormFields } from "@/type/messenger";
  * - onMessengerTypeChange: 메신저 타입 변경 시 호출되는 함수
  */
 export const useMessengerRegistration = (): MessengerRegistrationReturnType => {
-    const router = useRouter();
     const { control, handleSubmit, register } = useForm<MessengerFormFields>();
     const [selectedMessengerType, setSelectedMessengerType] = useState("");
+    const [isMessengerSuccess, setIsMessengerSuccess] = useState(false);
     const repositoryId = Number(getSessionStorage("repositoryId"));
 
     /**
@@ -43,15 +43,9 @@ export const useMessengerRegistration = (): MessengerRegistrationReturnType => {
             webhookUrl,
         });
         if (response.status === "Success") {
-            const responseMessenger = await postFetchEnc(
-                response.data.encryptedWebhookUrl
-            );
-            if (responseMessenger.status === 200) {
-                alert(
-                    "메신저 활성화에 성공했습니다. 메인 페이지로 이동합니다."
-                );
-                router.push("/");
-            }
+            setIsMessengerSuccess(true);
+        } else {
+            setIsMessengerSuccess(false);
         }
     };
 
@@ -62,5 +56,7 @@ export const useMessengerRegistration = (): MessengerRegistrationReturnType => {
         onSubmit,
         selectedMessengerType,
         onMessengerTypeChange,
+        isMessengerSuccess,
+        setIsMessengerSuccess,
     };
 };

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { RepositoryData } from "@/apis/type";
-import { getMyRepositoryList } from "@/apis/repository";
+import { deleteFetchRepository, getMyRepositoryList } from "@/apis/repository";
 import { getSessionStorageObject } from "@/utils/storage";
 import { ShortenText } from "@/utils/shorten-text";
 import { UserInfoType } from "@/app/user-dashboard/type";
@@ -29,7 +29,9 @@ const FetchRepositoryList = () => {
         fetchMyRepositories();
     }, []);
 
-    // const handleDelete = async () => {await deleteFetchRepository(48);};
+    // const handleDelete = async () => {
+    //     await deleteFetchRepository(55);
+    // };
 
     if (!repositories) return <EmptyRepoList />;
     return (
@@ -45,6 +47,7 @@ const FetchRepositoryList = () => {
                     <p className="text-[13px] font-normal text-GREY-80">
                         {ShortenText(repo.fullName, 50)}
                     </p>
+                    {/* <button onClick={handleDelete}>삭제</button> */}
                 </li>
             ))}
         </ul>
