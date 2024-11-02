@@ -1,5 +1,4 @@
 import { UserInfoType } from "@/type/user";
-import { setSessionStorageObject } from "@/utils/storage";
 import { API_URI, ApiInstance } from "./api-instance";
 
 export const postFetchAuth = async (code: string) => {

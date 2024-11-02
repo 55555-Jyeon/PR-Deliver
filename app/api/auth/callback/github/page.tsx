@@ -35,8 +35,14 @@ export default function OAuthCallback() {
                             }
                         }
                     }
-                } catch (error) {
-                    console.error("Error during token exchange:", error);
+                } catch (error: unknown) {
+                    throw new Error(
+                        `Error during token exchange: ${
+                            error instanceof Error
+                                ? error.message
+                                : "An unknown error occurred."
+                        }`
+                    );
                 }
             }
         };

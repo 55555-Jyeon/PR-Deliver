@@ -24,8 +24,8 @@ export default function Home() {
                 } else {
                     router.push("/");
                 }
-            } catch (error) {
-                console.error("Failed to fetch user info:", error);
+            } catch {
+                throw new Error("Failed to fetch user info");
             }
         };
         fetchUserInfo();

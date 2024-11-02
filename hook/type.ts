@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { Control, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
 import { MessengerFormFields } from "@/type/messenger";
 

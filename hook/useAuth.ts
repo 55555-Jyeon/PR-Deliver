@@ -24,8 +24,8 @@ export const useAuth = () => {
                 const userData = await response.json();
                 setUser(userData);
             }
-        } catch (error) {
-            console.error("Failed to fetch user data:", error);
+        } catch {
+            throw new Error("Failed to fetch user data");
         }
     };
 

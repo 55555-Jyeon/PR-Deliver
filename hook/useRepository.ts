@@ -28,7 +28,7 @@ export const useRepository = () => {
                 const response = await getMyRepositoryList(userInfo?.login);
                 setRepoInfo(response.data);
                 setIsLoading(false);
-            } catch (error) {
+            } catch {
                 throw new Error(
                     "레포지토리를 불러오는 중 오류가 발생했습니다."
                 );

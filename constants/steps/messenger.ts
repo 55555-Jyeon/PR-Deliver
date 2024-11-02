@@ -2,7 +2,7 @@ import { StepType } from "../type";
 
 export const MessengerWebHook: StepType[] = [
     {
-        stepDesc: '서버 이름 클릭 후 "서버 설정" 클릭',
+        stepDesc: "서버 이름 클릭 후 '서버 설정' 클릭",
         imageSrc: "/images/steps/web-hook/messanger/01.jpg",
         imageHeight: 788,
     },
