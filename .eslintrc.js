@@ -3,11 +3,23 @@ module.exports = {
         browser: true,
         es2021: true,
     },
+    settings: {
+        "import/resolver": {
+            typescript: {
+                alwaysTryTypes: true,
+            },
+        },
+        react: {
+            version: "detect",
+        },
+    },
     extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:prettier/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
     ],
     overrides: [
         {
@@ -27,13 +39,14 @@ module.exports = {
     },
     plugins: ["@typescript-eslint", "react"],
     rules: {
-        indent: ["error", "tab"],
+        indent: ["error", 4],
         "linebreak-style": ["error", "windows"],
         quotes: ["error", "double"],
         semi: ["error", "always"],
         "no-console": "warn",
         "no-unused-vars": "warn",
-        "prettier/prettier": "error",
+        "react/react-in-jsx-scope": "off",
+        "prettier/prettier": ["error", { endOfLine: "crlf" }],
         "import/order": [
             "error",
             {
@@ -44,10 +57,7 @@ module.exports = {
                     ["sibling", "parent"],
                     "index",
                 ],
-                alphabetize: {
-                    order: "asc",
-                    caseInsensitive: true,
-                },
+                alphabetize: { order: "asc", caseInsensitive: true },
             },
         ],
     },

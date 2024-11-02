@@ -1,5 +1,5 @@
-import { getGitHubAuthUrl } from "@/utils/auth";
 import { useState, useEffect } from "react";
+import { getGitHubAuthUrl } from "@/utils/auth";
 
 export const useAuth = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);

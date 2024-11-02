@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import AuthLoginButton from "./_components/auth-login-button";
-import MainDescription from "./_components/description";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { getSessionStorageObject } from "@/utils/storage";
+import AuthLoginButton from "./_components/auth-login-button";
+import MainDescription from "./_components/description";
 import { UserInfoType } from "./user-dashboard/type";
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
     return (
         <main
             className="absolute w-full flex-center flex-col"
-            style={{ height: `calc(100vh - 180px)` }}
+            style={{ height: "calc(100vh - 180px)" }}
         >
             <>
                 <MainDescription />

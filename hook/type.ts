@@ -1,5 +1,5 @@
-import { MessengerFormFields } from "@/type/messenger";
 import { Control, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { MessengerFormFields } from "@/type/messenger";
 
 export type MessengerRegistrationReturnType = {
     /**

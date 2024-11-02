@@ -2,8 +2,8 @@
 
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
-import MessengerSelector from "./register/select-container";
 import { useMessengerRegistration } from "@/hook/use-messenger-registration";
+import MessengerSelector from "./register/select-container";
 
 const RegisterTab = () => {
     const {

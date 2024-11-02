@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { RepositoryData } from "@/apis/type";
 import { getMyRepositoryList } from "@/apis/repository";
-import { getSessionStorageObject } from "@/utils/storage";
-import { ShortenText } from "@/utils/shorten-text";
+import { RepositoryData } from "@/apis/type";
 import { UserInfoType } from "@/app/user-dashboard/type";
+import { ShortenText } from "@/utils/shorten-text";
+import { getSessionStorageObject } from "@/utils/storage";
 import EmptyRepoList from "./empty-repo-list";
 
 const FetchRepositoryList = () => {

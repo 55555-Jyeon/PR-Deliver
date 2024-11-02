@@ -1,7 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import { TAB_LIST } from "@/constants/user/nav-tab";
 import { SideNavProps } from "./type";
-import Link from "next/link";
-import Image from "next/image";
 
 const SideNavigation = ({ activeTab, userId }: SideNavProps) => {
     return (

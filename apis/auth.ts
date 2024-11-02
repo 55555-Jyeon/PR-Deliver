@@ -1,6 +1,6 @@
 import { UserInfoType } from "@/type/user";
-import { API_URI, ApiInstance } from "./api-instance";
 import { setSessionStorageObject } from "@/utils/storage";
+import { API_URI, ApiInstance } from "./api-instance";
 
 export const postFetchAuth = async (code: string) => {
     const response = await fetch(`${API_URI}/oauth2/success?code=${code}`, {

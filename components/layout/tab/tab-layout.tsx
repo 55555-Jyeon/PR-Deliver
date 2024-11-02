@@ -1,8 +1,8 @@
 "use client";
 
-import TabMenu from "./tab-menu";
 import { useState } from "react";
 import PageDescription from "./page-desc";
+import TabMenu from "./tab-menu";
 import { TabLayoutProps } from "./type";
 
 const TabLayout = ({
@@ -38,7 +38,9 @@ const TabLayout = ({
                     </div>
                 ))}
                 <div
-                    className={`absolute w-[1073px] bottom-0 border-b-2 border-b-SYSTEM-black z-10`}
+                    className={
+                        "absolute w-[1073px] bottom-0 border-b-2 border-b-SYSTEM-black z-10"
+                    }
                     style={{ left: `${leftPosition}` }}
                 />
             </div>
