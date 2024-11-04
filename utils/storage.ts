@@ -6,7 +6,7 @@ export const getSessionStorage = (key: string) => {
     return sessionStorage.getItem(key);
 };
 
-export const setSessionStorageObject = (key: string, value: Object) => {
+export const setSessionStorageObject = (key: string, value: object) => {
     sessionStorage.setItem(key, JSON.stringify(value));
 };
 

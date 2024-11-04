@@ -1,11 +1,11 @@
 "use client";
 
-import { UserDashboardOptionsType } from "@/constants/type";
-import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { UserDashboardOptionsType } from "@/constants/type";
+import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
 import { getSessionStorageObject } from "@/utils/storage";
 import { UserInfoType } from "./type";
 
@@ -33,7 +33,7 @@ const UserDashboard = () => {
     return (
         <div
             className="absolute w-full flex-center flex-col"
-            style={{ height: `calc(100vh - 180px)` }}
+            style={{ height: "calc(100vh - 180px)" }}
         >
             <div className="flex-center flex-row">
                 {USER_DASHBOARD_OPTIONS.map((option, index) => (

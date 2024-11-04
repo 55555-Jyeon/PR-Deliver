@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getMyRepositoryList } from "@/apis/repository";
 import { RepositoryData } from "@/apis/type";
-import { deleteFetchRepository, getMyRepositoryList } from "@/apis/repository";
-import { getSessionStorageObject } from "@/utils/storage";
-import { ShortenText } from "@/utils/shorten-text";
 import { UserInfoType } from "@/app/user-dashboard/type";
+import { ShortenText } from "@/utils/shorten-text";
+import { getSessionStorageObject } from "@/utils/storage";
 import EmptyRepoList from "./empty-repo-list";
 
 const FetchRepositoryList = () => {
@@ -29,9 +29,7 @@ const FetchRepositoryList = () => {
         fetchMyRepositories();
     }, []);
 
-    // const handleDelete = async () => {
-    //     await deleteFetchRepository(55);
-    // };
+    // const handleDelete = async () => {await deleteFetchRepository(48);};
 
     if (!repositories) return <EmptyRepoList />;
     return (
@@ -47,7 +45,6 @@ const FetchRepositoryList = () => {
                     <p className="text-[13px] font-normal text-GREY-80">
                         {ShortenText(repo.fullName, 50)}
                     </p>
-                    {/* <button onClick={handleDelete}>삭제</button> */}
                 </li>
             ))}
         </ul>

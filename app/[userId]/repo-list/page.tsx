@@ -1,5 +1,5 @@
-import TabTitle from "../_components/tab-title";
 import { TAB_LIST } from "@/constants/user/nav-tab";
+import TabTitle from "../_components/tab-title";
 import FetchRepositoryList from "./_components/fetch-repo-list";
 
 const RepositoryList = () => {

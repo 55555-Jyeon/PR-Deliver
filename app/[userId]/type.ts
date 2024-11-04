@@ -1,4 +1,4 @@
 export type UserLayoutProps = {
-  children: React.ReactNode;
-  params: { userId: string };
+    children: React.ReactNode;
+    params: { userId: string };
 };

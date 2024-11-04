@@ -6,6 +6,6 @@
  * @returns {string} maxLength만큼 줄여진 텍스트 길이
  */
 export const ShortenText = (text: string, maxLength: number): string => {
-  if (text.length <= maxLength) return text;
-  return `${text.substring(0, maxLength)}...`;
+    if (text.length <= maxLength) return text;
+    return `${text.substring(0, maxLength)}...`;
 };

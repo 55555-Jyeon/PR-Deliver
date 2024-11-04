@@ -18,7 +18,7 @@ const MethodTab = ({
             </span>
             <p className="text-[16px] mt-4 mb-5">{stepDesc}</p>
             <div
-                className={`relative w-full flex flex-col`}
+                className={"relative w-full flex flex-col"}
                 style={{ height: `${imageHeight}px` }}
             >
                 <Image
@@ -33,7 +33,7 @@ const MethodTab = ({
             )}
             {secondImageSrc && (
                 <div
-                    className={`relative w-full flex flex-col mt-12`}
+                    className={"relative w-full flex flex-col mt-12"}
                     style={{ height: `${secondImageHeight}px` }}
                 >
                     <Image
