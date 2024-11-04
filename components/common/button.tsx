@@ -13,7 +13,7 @@ import "@/styles/button.css";
  * @param {boolean} [isModal = false] - 버튼 종류를 결정하는 플래그. true일 경우 모달 버튼 스타일 적용
  * @param {string} [buttonBgColor] - isModal이 true일 경우, 적용될 버튼의 배경 색상
  * @param {string} [buttonTextColor] - isModal이 ture일 경우, 적용될 버튼의 글자 색상
- * @param {boolean} [buttonActive = true] - 버튼의 활성화의 제어를 결정하며 기본값은 true 
+ * @param {boolean} [buttonActive = true] - 버튼의 활성화의 제어를 결정하며 기본값은 true  
 
  * @returns {JSX.Element} 버튼 컴포넌트를 반환
  */

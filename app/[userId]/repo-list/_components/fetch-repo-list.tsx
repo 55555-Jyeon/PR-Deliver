@@ -29,9 +29,9 @@ const FetchRepositoryList = () => {
         fetchMyRepositories();
     }, []);
 
-    // const handleDelete = async () => {
-    //     await deleteFetchRepository(55);
-    // };
+    const handleDelete = async () => {
+        await deleteFetchRepository(57);
+    };
 
     if (!repositories) return <EmptyRepoList />;
     return (
@@ -47,7 +47,7 @@ const FetchRepositoryList = () => {
                     <p className="text-[13px] font-normal text-GREY-80">
                         {ShortenText(repo.fullName, 50)}
                     </p>
-                    {/* <button onClick={handleDelete}>삭제</button> */}
+                    <button onClick={handleDelete}>삭제</button>
                 </li>
             ))}
         </ul>
