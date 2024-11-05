@@ -12,12 +12,13 @@ import DeliverButton from "./button";
  * @param {boolean} isSuccess - 성공 여부에 따라 다른 아이콘과 스타일을 적용
  * @param {boolean} isOpen - 모달이 열려 있는지 여부
  * @param {Function} onClose - 모달을 닫을 때 호출되는 함수
- * @param {Function} onReturn - 모달을 닫거나 취소 시 호출되는 함수
+ * @param {Function} onReturn - 모달을 닫거나 취소 시 호출되는 함수 | 선택적
  * @param {Function} onConfirm - 확인 버튼을 눌렀을 때 호출되는 함수
  * @param {string} title - 모달의 제목
  * @param {string} content - 모달의 본문 내용
- * @param {string} content2 - 모달의 두번째 본문 내용
- * @param {Function} returnButtonText - 모달의 취소 및 닫을 때 호출되는 함수
+ * @param {string} content2 - 모달의 두번째 본문 내용 | 선택적
+ * @param {string} buttonText - 모달의 버튼 텍스트
+ * @param {string} returnButtonText - 모달의 취소 및 닫을 때 활성화되는 버튼의 텍스트 | 선택적
  */
 const DeliverModal = ({
     isSuccess,
@@ -41,16 +42,14 @@ const DeliverModal = ({
     return (
         <Overlay isOpen={isOpen} onClick={onClose}>
             <div className="relative w-[360px] h-full rounded-2xl p-5 bg-SYSTEM-white">
-                <div className=" cursor-pointer">
-                    <Image
-                        width={24}
-                        height={24}
-                        src={"/icons/close.svg"}
-                        alt="close modal"
-                        className="absolute right-5"
-                        onClick={onClose}
-                    />
-                </div>
+                <Image
+                    width={24}
+                    height={24}
+                    src={"/icons/close.svg"}
+                    alt="close modal"
+                    className="absolute right-5 cursor-pointer"
+                    onClick={onClose}
+                />
                 <div className="flex-center flex-col mt-1">
                     <div
                         className={`w-[60px] h-[60px] rounded-full flex-center ${IconBG}`}
@@ -102,3 +101,4 @@ const DeliverModal = ({
     );
 };
 export default DeliverModal;
+

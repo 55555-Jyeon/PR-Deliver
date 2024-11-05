@@ -5,15 +5,23 @@ import DeliverButton from "@/components/common/button";
 import DeliverModal from "@/components/common/modal";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ActivePage = () => {
     const router = useRouter();
-    const urlParams = new URLSearchParams(window.location.search);
-    const encryptedWebhookUrl = urlParams.get("encryptedWebhookUrl");
 
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [encryptedWebhookUrl, setEncryptedWebhookUrl] = useState<
+        string | null
+    >(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const urlParams = new URLSearchParams(window.location.search);
+            setEncryptedWebhookUrl(urlParams.get("encryptedWebhookUrl"));
+        }
+    }, []);
 
     const handleMessengerActive = async () => {
         try {
