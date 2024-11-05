@@ -1,11 +1,11 @@
 "use client";
 
-import { postFetchEnc } from "@/apis/messenger";
-import DeliverButton from "@/components/common/button";
-import DeliverModal from "@/components/common/modal";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { postFetchEnc } from "@/apis/messenger";
+import DeliverButton from "@/components/common/button";
+import DeliverModal from "@/components/common/modal";
 
 const ActivePage = () => {
     const router = useRouter();

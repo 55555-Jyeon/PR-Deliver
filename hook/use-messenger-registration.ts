@@ -1,10 +1,9 @@
 import { useState, ChangeEvent } from "react";
-import { postFetchEnc, postFetchMessenger } from "@/apis/messenger";
-import { getSessionStorage } from "@/utils/storage";
-import { useRouter } from "next/navigation";
-import { MessengerRegistrationReturnType } from "./type";
 import { FieldValues, useForm } from "react-hook-form";
+import { postFetchMessenger } from "@/apis/messenger";
 import { MessengerFormFields } from "@/type/messenger";
+import { getSessionStorage } from "@/utils/storage";
+import { MessengerRegistrationReturnType } from "./type";
 
 /**
  * @function useMessengerRegistration 메신저 등록 폼을 관리하는 커스텀 훅으로 폼 제출, 데이터 가져오기, 페이지 이동을 처리

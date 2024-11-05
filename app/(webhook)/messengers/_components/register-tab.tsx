@@ -1,11 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import DeliverButton from "@/components/common/button";
 import DeliverInput from "@/components/common/input";
-import MessengerSelector from "./register/select-container";
-import { useMessengerRegistration } from "@/hook/use-messenger-registration";
 import DeliverModal from "@/components/common/modal";
-import { useRouter } from "next/navigation";
+import { useMessengerRegistration } from "@/hook/use-messenger-registration";
+import MessengerSelector from "./register/select-container";
 
 const RegisterTab = () => {
     const router = useRouter();

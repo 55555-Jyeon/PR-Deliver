@@ -15,4 +15,6 @@ export type MessengerRegistrationReturnType = {
     onSubmit: (data: MessengerFormFields) => Promise<void>;
     selectedMessengerType: string;
     onMessengerTypeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isMessengerSuccess: boolean;
+    setIsMessengerSuccess: (isMessengerSeccess: boolean) => void;
 };

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import SUCCESS from "@/public/icons/success.svg";
 import ERROR from "@/public/icons/error.svg";
-import Overlay from "./overlay";
-import { DeliverModalProps } from "./type";
+import SUCCESS from "@/public/icons/success.svg";
 import { ShortenText } from "@/utils/shorten-text";
 import DeliverButton from "./button";
+import Overlay from "./overlay";
+import { DeliverModalProps } from "./type";
 
 /**
  * @component DeliverModal
@@ -101,4 +101,3 @@ const DeliverModal = ({
     );
 };
 export default DeliverModal;
-

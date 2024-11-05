@@ -52,4 +52,3 @@ const FetchRepositoryList = () => {
 };
 
 export default FetchRepositoryList;
-
