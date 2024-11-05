@@ -1,10 +1,10 @@
 "use client";
 
-import { UserDashboardOptionsType } from "@/constants/type";
-import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { UserDashboardOptionsType } from "@/constants/type";
+import { USER_DASHBOARD_OPTIONS } from "@/constants/user/main-dashboard";
 
 const UserDashboard = ({ userId }: { userId: string }) => {
     const router = useRouter();

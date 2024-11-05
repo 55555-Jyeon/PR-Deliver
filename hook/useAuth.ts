@@ -1,5 +1,5 @@
-import { getGitHubAuthUrl } from "@/utils/auth";
 import { useState, useEffect } from "react";
+import { getGitHubAuthUrl } from "@/utils/auth";
 
 export const useAuth = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,8 +24,8 @@ export const useAuth = () => {
                 const userData = await response.json();
                 setUser(userData);
             }
-        } catch (error) {
-            console.error("Failed to fetch user data:", error);
+        } catch {
+            throw new Error("Failed to fetch user data");
         }
     };
 

@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { getMyRepositoryList } from "@/apis/repository";
 import { UserInfoType } from "@/app/user-dashboard/type";
 import { MyRepositoryListType } from "@/type/user";
 import { getSessionStorageObject } from "@/utils/storage";
-import { useEffect, useState } from "react";
 
 /**
  * My Repository 정보를 받아오는 커스텀 훅
@@ -28,7 +28,7 @@ export const useRepository = () => {
                 const response = await getMyRepositoryList(userInfo?.login);
                 setRepoInfo(response.data);
                 setIsLoading(false);
-            } catch (error) {
+            } catch {
                 throw new Error(
                     "레포지토리를 불러오는 중 오류가 발생했습니다."
                 );

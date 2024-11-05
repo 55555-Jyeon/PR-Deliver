@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { MyRepositoryListType } from "@/type/user";
 
 export type WebhookListProps = {

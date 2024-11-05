@@ -1,5 +1,7 @@
-import { MessengerFormFields } from "@/type/messenger";
+/* eslint-disable no-unused-vars */
+
 import { Control, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { MessengerFormFields } from "@/type/messenger";
 
 export type MessengerRegistrationReturnType = {
     /**
@@ -13,6 +15,4 @@ export type MessengerRegistrationReturnType = {
     onSubmit: (data: MessengerFormFields) => Promise<void>;
     selectedMessengerType: string;
     onMessengerTypeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    isMessengerSuccess: boolean;
-    setIsMessengerSuccess: (isMessengerSuccess: boolean) => void;
 };

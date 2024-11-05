@@ -1,7 +1,7 @@
 "use client";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { getUserInfo, postFetchAuth } from "@/apis/auth";
 import { setSessionStorageObject } from "@/utils/storage";
 
@@ -35,8 +35,14 @@ export default function OAuthCallback() {
                             }
                         }
                     }
-                } catch (error) {
-                    console.error("Error during token exchange:", error);
+                } catch (error: unknown) {
+                    throw new Error(
+                        `Error during token exchange: ${
+                            error instanceof Error
+                                ? error.message
+                                : "An unknown error occurred."
+                        }`
+                    );
                 }
             }
         };

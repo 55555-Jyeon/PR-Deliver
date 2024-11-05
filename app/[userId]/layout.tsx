@@ -1,7 +1,7 @@
 "use client";
 
-import SideNavigation from "./_components/side-nav";
 import { usePathname } from "next/navigation";
+import SideNavigation from "./_components/side-nav";
 import { UserLayoutProps } from "./type";
 
 export default function UserLayout({ children, params }: UserLayoutProps) {

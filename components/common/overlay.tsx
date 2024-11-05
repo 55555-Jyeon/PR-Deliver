@@ -33,7 +33,9 @@ const Overlay = ({ isOpen, onClick, children }: OverlayProps) => {
 
     return (
         <div
-            className={`fixed inset-0 flex-center z-[999] bg-SYSTEM-black bg-opacity-50`}
+            className={
+                "fixed inset-0 flex-center z-[999] bg-SYSTEM-black bg-opacity-50"
+            }
             onClick={onClick}
             aria-modal="true"
             role="dialog"

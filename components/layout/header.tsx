@@ -1,10 +1,10 @@
 "use client";
 
-import { UserInfoType } from "@/app/user-dashboard/type";
-import { getSessionStorageObject } from "@/utils/storage";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
+import { UserInfoType } from "@/app/user-dashboard/type";
+import { getSessionStorageObject } from "@/utils/storage";
 
 const Header = () => {
     const router = useRouter();
