@@ -15,7 +15,7 @@ const AuthLoginButton = () => {
         >
             <Image
                 priority
-                src={"/light/icons/github.svg"}
+                src={"/dark/icons/github.svg"}
                 width={24}
                 height={24}
                 alt="github login"
