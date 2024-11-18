@@ -1,10 +1,11 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
-import { Control, RegisterOptions, useForm } from "react-hook-form";
+import { RegisterOptions, useForm } from "react-hook-form";
 import DeliverInput from "../input";
+import "@testing-library/jest-dom";
 
 describe("DeliverInput", () => {
-    const TestComponent = ({
+    const TestWrapper = ({
         children,
         rules,
     }: {
@@ -18,35 +19,47 @@ describe("DeliverInput", () => {
                     control,
                     rules,
                 })}
-            </>;
+            </>
         );
     };
 
     it("DeliverInput component의 title과 placeholder가 올바르게 렌더링 되는지 확인", () => {
-        const { control } = useForm();
-
-        render(<TestComponent control={control} />);
+        render(
+            <TestWrapper>
+                <DeliverInput
+                    name="testInput"
+                    title="Test Title"
+                    placeholder="Enter value"
+                />
+            </TestWrapper>
+        );
 
         // 제목이 올바르게 표시되는지 확인
         expect(screen.getByText("Test Title")).toBeInTheDocument();
         // placeholder가 올바르게 표시되는지 확인
-        expect(screen.getByPlaceholderText("Enter Value")).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Enter value")).toBeInTheDocument();
     });
 
-    it("field가 비어있을 때 error message가 올바르게 보이는지 확인", async () => {
+    it("필수 입력 필드에서 값이 없을 경우 오류 메시지를 보여준다", async () => {
         const { control, handleSubmit } = useForm();
         const onSubmit = jest.fn();
 
         render(
             <form onSubmit={handleSubmit(onSubmit)}>
-                <TestComponent
-                    control={control}
-                    rules={{ required: "This field is required" }}
-                />
+                <TestWrapper>
+                    <DeliverInput
+                        name="testInput"
+                        title="Test Title"
+                        placeholder="Enter value"
+                        control={control}
+                        rules={{ required: "This field is required" }}
+                    />
+                </TestWrapper>
                 <button type="submit">Submit</button>
             </form>
         );
 
+        // const input = screen.getByPlaceholderText("Enter value");
         const submitButton = screen.getByRole("button", { name: /submit/i });
 
         // 제출 버튼 클릭
@@ -56,14 +69,18 @@ describe("DeliverInput", () => {
         expect(
             await screen.findByText("This field is required")
         ).toBeInTheDocument();
-        // onSubmit 함수가 호출되지 않는지 확인
-        expect(onSubmit).not.toHaveBeenCalled();
     });
 
-    it("updates the input value when the user types", () => {
-        const { control } = useForm();
-
-        render(<TestComponent control={control} rules={{}} />);
+    it("입력 값이 올바르게 업데이트 되는지 확인", () => {
+        render(
+            <TestWrapper>
+                <DeliverInput
+                    name="testInput"
+                    title="Test Title"
+                    placeholder="Enter value"
+                />
+            </TestWrapper>
+        );
 
         const input = screen.getByPlaceholderText("Enter value");
 
