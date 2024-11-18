@@ -3,6 +3,13 @@ import DeliverModal from "../modal";
 import { DeliverModalProps } from "../type";
 import "@testing-library/jest-dom";
 
+jest.mock("next/image", () => ({
+    __esModule: true,
+    default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+        <img {...props} />
+    ),
+}));
+
 describe("DeliverModal Component", () => {
     const defaultProps: DeliverModalProps = {
         isSuccess: true,
@@ -34,16 +41,16 @@ describe("DeliverModal Component", () => {
         const { rerender } = render(
             <DeliverModal {...defaultProps} isSuccess={true} />
         );
-        expect(screen.getByAltText("alert icon")).toHaveAttribute(
-            "src",
-            "success.svg"
-        );
+
+        // 성공 상태에서의 아이콘 확인
+        const successIcon = screen.getByAltText("alert icon");
+        expect(successIcon).toHaveAttribute("src", "/icons/success.svg");
 
         rerender(<DeliverModal {...defaultProps} isSuccess={false} />);
-        expect(screen.getByAltText("alert icon")).toHaveAttribute(
-            "src",
-            "error.svg"
-        );
+
+        // 실패 상태에서의 아이콘 확인
+        const errorIcon = screen.getByAltText("alert icon");
+        expect(errorIcon).toHaveAttribute("src", "/icons/error.svg");
     });
 
     it("닫기 버튼을 클릭하면 onClose가 호출도니다", () => {
@@ -61,8 +68,8 @@ describe("DeliverModal Component", () => {
     });
 
     it("취소 버튼을 클릭하면 onReturn이 호출된다.", () => {
-        render(<DeliverModal {...defaultProps} isOpen={false} />);
-        fireEvent.click(screen.getByAltText("취소"));
+        render(<DeliverModal {...defaultProps} isOpen={true} />);
+        fireEvent.click(screen.getByText("취소"));
 
         expect(defaultProps.onReturn).toHaveBeenCalledTimes(1);
     });

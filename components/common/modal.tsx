@@ -1,6 +1,4 @@
 import Image from "next/image";
-import ERROR from "@/public/icons/error.svg";
-import SUCCESS from "@/public/icons/success.svg";
 import { ShortenText } from "@/utils/shorten-text";
 import DeliverButton from "./button";
 import Overlay from "./overlay";
@@ -33,7 +31,7 @@ const DeliverModal = ({
     returnButtonText,
 }: DeliverModalProps) => {
     // success 여부에 따라 달라지는 css
-    const Icon = isSuccess ? SUCCESS : ERROR;
+    const Icon = isSuccess ? "/icons/success.svg" : "/icons/error.svg";
     const IconBG = isSuccess ? "bg-BRAND-30" : "bg-ERROR-10";
     const buttonBgColor = isSuccess ? "bg-BRAND-50" : "bg-ERROR-50";
     const successButtonBgColor = isSuccess ? "bg-BRAND-30" : "";

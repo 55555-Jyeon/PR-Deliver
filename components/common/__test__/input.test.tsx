@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
-import { RegisterOptions, useForm } from "react-hook-form";
+import { RegisterOptions, useForm, FormProvider } from "react-hook-form";
 import DeliverInput from "../input";
 import "@testing-library/jest-dom";
 
@@ -41,31 +41,32 @@ describe("DeliverInput", () => {
     });
 
     it("필수 입력 필드에서 값이 없을 경우 오류 메시지를 보여준다", async () => {
-        const { control, handleSubmit } = useForm();
-        const onSubmit = jest.fn();
+        // React Hook Form 설정
+        const Wrapper = () => {
+            const methods = useForm();
+            return (
+                <FormProvider {...methods}>
+                    <form onSubmit={methods.handleSubmit(jest.fn())}>
+                        <DeliverInput
+                            name="testInput"
+                            title="Test Title"
+                            placeholder="Enter value"
+                            rules={{ required: "This field is required" }}
+                            control={methods.control}
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
+                </FormProvider>
+            );
+        };
 
-        render(
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <TestWrapper>
-                    <DeliverInput
-                        name="testInput"
-                        title="Test Title"
-                        placeholder="Enter value"
-                        control={control}
-                        rules={{ required: "This field is required" }}
-                    />
-                </TestWrapper>
-                <button type="submit">Submit</button>
-            </form>
-        );
+        // 렌더링
+        render(<Wrapper />);
 
-        // const input = screen.getByPlaceholderText("Enter value");
-        const submitButton = screen.getByRole("button", { name: /submit/i });
+        // 폼 제출
+        fireEvent.click(screen.getByText("Submit"));
 
-        // 제출 버튼 클릭
-        fireEvent.click(submitButton);
-
-        // 에러 메시지가 표시되는지 확인
+        // 오류 메시지가 렌더링되었는지 확인
         expect(
             await screen.findByText("This field is required")
         ).toBeInTheDocument();
