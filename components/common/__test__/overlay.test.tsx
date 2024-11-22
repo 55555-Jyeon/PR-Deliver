@@ -68,7 +68,7 @@ describe("overlay component", () => {
     it("children이 올바르게 렌더링되는지 확인", () => {
         render(
             <Overlay isOpen={true} onClick={jest.fn()}>
-                <div data-testId="child">children content</div>
+                <div data-testid="child">children content</div>
             </Overlay>
         );
 
