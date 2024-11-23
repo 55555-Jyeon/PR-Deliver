@@ -18,12 +18,7 @@ const StepTemplate = ({
                 className={"relative w-full flex flex-col"}
                 style={{ height: `${imageHeight}px` }}
             >
-                <Image
-                    fill
-                    sizes="auto"
-                    src={imageSrc}
-                    alt="each step's image"
-                />
+                <Image sizes="auto" src={imageSrc} alt="each step's image" />
             </div>
             {imageDesc && (
                 <p className="text-sm text-GREY-60 pt-3 pl-1">{imageDesc}</p>
