@@ -3,12 +3,12 @@ import Header from "./header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="flex flex-col">
+        <div className="h-screen flex flex-col">
             <Header />
-            <main className="max-h-[calc(100vh-60px-120px)] mt-[60px] overflow-hidden">
-                {children}
+            <main className="h-full flex-1 overflow-y-scroll hide-scrollbar">
+                <div className="h-full mt-[60px]">{children}</div>
+                <Footer />
             </main>
-            <Footer />
         </div>
     );
 };
