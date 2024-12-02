@@ -43,3 +43,19 @@ body {
         text-wrap: balance;
     }
 }
+
+/* scroll */
+Untitled
+
+/* 스크롤바 숨기기 */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* WebKit (Chrome, Safari) */
+}
